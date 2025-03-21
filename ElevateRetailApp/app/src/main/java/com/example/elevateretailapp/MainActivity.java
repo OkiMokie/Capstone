@@ -6,12 +6,14 @@ import com.example.elevateretailapp.databinding.ActivityMainBinding;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
+import androidx.fragment.app.Fragment;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import com.example.elevateretailapp.R;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -23,21 +25,28 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         EdgeToEdge.enable(this);
-        setContentView(binding.getRoot());
-        replaceFragment(new HomeFragment());
+        setContentView(R.layout.activity_main);
 
-        binding.bottomNavigationView.setOnItemSelectedListener(item -> {
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
+
+        Fragment homeFrag = new HomeFragment();
+        Fragment profileFrag = new ProfileFragment();
+        Fragment settingsFrag = new SettingsFragment();
+
+        setCurrentFragment(homeFrag);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
 
             switch (item.getItemId()){
 
                 case R.id.Home:
-                    replaceFragment(new HomeFragment());
+                    setCurrentFragment(homeFrag);
                     break;
                 case R.id.Profile:
-                    replaceFragment(new ProfileFragment());
+                    setCurrentFragment(profileFrag);
                     break;
                 case R.id.Settings:
-                    replaceFragment(new SettingsFragment());
+                    setCurrentFragment(settingsFrag);
                     break;
             }
 
@@ -52,10 +61,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void replaceFragment(Fragment fragment){
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.frameLayout, fragment);
-        fragmentTransaction.commit();
+    private void setCurrentFragment(Fragment fragment) {
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.frameLayout, fragment)
+                .commit();
     }
 }
