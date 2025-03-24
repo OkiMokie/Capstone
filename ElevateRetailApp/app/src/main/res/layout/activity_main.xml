@@ -13,12 +13,13 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
+            android:background="@color/design_default_color_primary"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:title="Elevate Retail" />
+            app:title="Elevate Retail"
+            app:titleTextColor="#FFEB3B" />
 
 
         <FrameLayout
@@ -40,6 +41,18 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:menu="@menu/bottom_navigator_view" />
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/FragmentContainer"
+            android:name="com.example.elevateretailapp.HomeFragment"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/frameLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

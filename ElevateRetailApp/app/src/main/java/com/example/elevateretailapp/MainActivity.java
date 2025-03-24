@@ -38,29 +38,36 @@ public class MainActivity extends AppCompatActivity {
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
+
+        // the fragments
         Fragment homeFrag = new HomeFragment();
         Fragment profileFrag = new ProfileFragment();
         Fragment settingsFrag = new SettingsFragment();
+        Fragment cartFrag = new CartFragment();
 
         setCurrentFragment(homeFrag);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
-
-            switch (item.getItemId()){
-
+            Fragment selectedFragment = null;
+            switch (item.getItemId()) {
                 case R.id.Home:
-                    setCurrentFragment(homeFrag);
+                    selectedFragment = homeFrag;
                     break;
                 case R.id.Profile:
-                    setCurrentFragment(profileFrag);
+                    selectedFragment = profileFrag;
                     break;
                 case R.id.Settings:
-                    setCurrentFragment(settingsFrag);
+                    selectedFragment = settingsFrag;
                     break;
+                case R.id.Cart:
+                    selectedFragment = cartFrag;
             }
-
+            if (selectedFragment != null) {
+                setCurrentFragment(selectedFragment);
+            }
             return true;
         });
+
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.ConstraintLayout), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -70,13 +77,17 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void setCurrentFragment(Fragment fragment) {
+
+    // sets the current fragment on the screen
+    void setCurrentFragment(Fragment fragment) {
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.frameLayout, fragment)
+                .replace(R.id.FragmentContainer, fragment)
                 .commit();
     }
 
+
+    // TODO: somebody please add a description to this lol -Teresa
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
