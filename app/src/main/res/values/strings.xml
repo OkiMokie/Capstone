@@ -4,5 +4,9 @@
     <string name="Home_Fragment">HOME</string>
     <string name="Settings_Fragment">SETTINGS</string>
     <string name="Profile_Fragment">PROFILE</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="Cart_Fragment">Cart Fragment</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="Checkout_Fragment">CHECKOUT</string>
 
 </resources>
