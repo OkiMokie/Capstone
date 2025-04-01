@@ -3,10 +3,16 @@ package com.example.elevateretailapp;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -59,6 +65,70 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false);
+        View view = inflater.inflate(R.layout.fragment_profile, container, false);
+        Button historyBtn = view.findViewById(R.id.btn_transaction_history);
+        Button shippingAddressesBtn = view.findViewById(R.id.btn_shipping);
+        Button wishlistBtn = view.findViewById(R.id.btn_wishlist);
+        Button paymentMethodsBtn = view.findViewById(R.id.btn_payment_methods);
+        RecyclerView RW_recyclerview = view.findViewById(R.id.recent_wishlist_recycler);
+        RecyclerView SI_recyclerview = view.findViewById(R.id.suggested_item_recycler);
+
+        historyBtn.setOnClickListener(v ->
+                requireActivity()
+                        .getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.FragmentContainer, new TransactionHistoryFragment())
+                        .commit()
+        );
+
+        shippingAddressesBtn.setOnClickListener(v ->
+                requireActivity()
+                        .getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.FragmentContainer, new ShippingAddressesFragment())
+                        .commit()
+        );
+
+        wishlistBtn.setOnClickListener(v ->
+                requireActivity()
+                        .getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.FragmentContainer, new WishlistFragment())
+                        .commit()
+        );
+
+        paymentMethodsBtn.setOnClickListener(v ->
+                requireActivity()
+                        .getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.FragmentContainer, new PaymentMethodsFragment())
+                        .commit()
+        );
+
+        ArrayList<ProfileProductItem> mockProfileItems1 = new ArrayList<>();
+        mockProfileItems1.add(new ProfileProductItem(R.drawable.product_image, "Pencils", "$12.99"));
+        mockProfileItems1.add(new ProfileProductItem(R.drawable.product_image, "One Piece Statue", "$59.99"));
+        mockProfileItems1.add(new ProfileProductItem(R.drawable.product_image, "Notebook", "$5.99"));
+        mockProfileItems1.add(new ProfileProductItem(R.drawable.product_image, "Lamp", "$55.99"));
+        mockProfileItems1.add(new ProfileProductItem(R.drawable.product_image, "Shoes", "$79.99"));
+
+        ArrayList<ProfileProductItem> mockProfileItems2 = new ArrayList<>();
+        mockProfileItems2.add(new ProfileProductItem(R.drawable.product_image, "Headphones", "$99.99"));
+        mockProfileItems2.add(new ProfileProductItem(R.drawable.product_image, "Notepad", "$3.99"));
+        mockProfileItems2.add(new ProfileProductItem(R.drawable.product_image, "Xbox Controller", "$109.99"));
+        mockProfileItems2.add(new ProfileProductItem(R.drawable.product_image, "Drawing Tablet", "$159.99"));
+        mockProfileItems2.add(new ProfileProductItem(R.drawable.product_image, "Pens", "$7.99"));
+
+
+
+        RW_RecyclerViewAdapter adapter1 = new RW_RecyclerViewAdapter(requireContext(), mockProfileItems1);
+        RW_recyclerview.setAdapter(adapter1);
+        RW_recyclerview.setLayoutManager(new LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL, false));
+
+        SI_RecyclerViewAdapter adapter2 = new SI_RecyclerViewAdapter(requireContext(), mockProfileItems2);
+        SI_recyclerview.setAdapter(adapter2);
+        SI_recyclerview.setLayoutManager(new LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL, false));
+
+        return view;
     }
 }
