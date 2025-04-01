@@ -2,11 +2,17 @@
     <string name="app_name">ElevateRetailApp</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="Home_Fragment">HOME</string>
-    <string name="Settings_Fragment">SETTINGS</string>
+    <string name="Settings_Fragment">APP SETTINGS</string>
     <string name="Profile_Fragment">PROFILE</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="Cart_Fragment">Cart Fragment</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="Checkout_Fragment">CHECKOUT</string>
+    <string name="aboutBtn_text">About</string>
+    <string name="close_settingsBtn_contentDesc">Close Settings</string>
+    <string name="notificationBtn_text">Notifications</string>
+    <string name="darkMode_swcText">Dark Mode</string>
+    <string name="legalBtn_text">Legal</string>
+    <string name="payMethodBtn_text">Payment Method</string>
 
 </resources>
