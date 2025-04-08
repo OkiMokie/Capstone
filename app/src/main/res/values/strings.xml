@@ -17,4 +17,6 @@
     <string name="Hello_User">Hi, User!</string>
     <string name="Image_Description">Description</string>
     <string name="Item_Price">Price</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
