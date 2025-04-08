@@ -80,7 +80,7 @@ public class SettingsFragment extends Fragment {
             public void onClick(View v) {
                 // use this function that was made in mainActivity, just copy it and pass the fragment you want to use
                 if (getActivity() instanceof MainActivity) {
-                    ((MainActivity) getActivity()).setCurrentFragment(new SettingsFragment());
+                    ((MainActivity) getActivity()).setCurrentFragment(new HomeFragment());
                 }
             }
         });

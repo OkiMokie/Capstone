@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ff"
+    android:background="#ffffff"
     tools:context=".SettingsFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -32,7 +32,7 @@
                 android:id="@+id/closeSettingBtn"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:background="#w"
+                android:background="#ffffff"
                 android:contentDescription="@string/close_settingsBtn_contentDesc"
                 android:src="@android:drawable/ic_menu_close_clear_cancel"
                 tools:ignore="TouchTargetSizeCheck" />
