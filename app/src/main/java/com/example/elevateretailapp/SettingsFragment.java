@@ -60,11 +60,31 @@ public class SettingsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        // Mokie:
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_settings, container, false);
+        // this used to be "return inflater.inflate(R.layout.fragment_settings, container, false);", but instead of this we want to make it an instance we can use rn
+        // that's why we declared it as a View object we can reference (View view)
+        View myView = inflater.inflate(R.layout.fragment_settings, container, false);
 
-        //Reference the button
-        ImageButton closeSetting = view.findViewById((R.id.btnCheckout));
+        //Reference the button / Mokie: the reason why you couldn't reference your button was because you didn't edit the code above to not return view, but instead make an instance
+        // notice how the object myView can now find your button! Because earlier we passed the container holding the button (fragment_settings)
+        ImageButton closeSetting = myView.findViewById((R.id.closeSettingBtn));
 
+        // Mokie: add the listener, the thing that makes the button work
+        // you can start typing the .setOnClickListener(new View...) and press tab when it gives you the auto-finish
+        // now you can make more buttons in this fashion, just reference the button you want to make work and create the function that its hooked up to
+
+        // this is the function the button is hooked up to vvvv
+        closeSetting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // use this function that was made in mainActivity, just copy it and pass the fragment you want to use
+                if (getActivity() instanceof MainActivity) {
+                    ((MainActivity) getActivity()).setCurrentFragment(new SettingsFragment());
+                }
+            }
+        });
+
+        return myView;
     }
 }
