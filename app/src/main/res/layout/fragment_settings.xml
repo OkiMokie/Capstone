@@ -17,12 +17,15 @@
         <LinearLayout
             android:id="@+id/settingsTitleBar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingLeft="12dp"
+                android:layout_weight="1"
                 android:text="@string/Settings_Fragment" />
 
             <ImageButton
@@ -46,28 +49,36 @@
                 android:orientation="vertical">
 
                 <Button
-                    android:id="@+id/aboutButton"
+                    android:id="@+id/payMethodButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/aboutBtn_text" />
+                    android:layout_gravity="center"
+                    android:text="@string/payMethodBtn_text"
+                    android:layout_marginTop="40dp"/>
 
                 <Button
                     android:id="@+id/notificationButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/notificationBtn_text" />
+                    android:layout_gravity="center"
+                    android:text="@string/notificationBtn_text"
+                    android:layout_marginTop="40dp"/>
 
                 <Button
                     android:id="@+id/legalButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/legalBtn_text" />
+                    android:layout_gravity="center"
+                    android:text="@string/legalBtn_text"
+                    android:layout_marginTop="40dp"/>
 
                 <Button
-                    android:id="@+id/payMethodButton"
+                    android:id="@+id/aboutButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/payMethodBtn_text" />
+                    android:layout_gravity="center"
+                    android:text="@string/aboutBtn_text"
+                    android:layout_marginTop="40dp"/>
 
             </LinearLayout>
         </ScrollView>
