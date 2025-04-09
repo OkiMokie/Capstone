@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="409dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" >
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="409dp"
+    android:layout_height="wrap_content"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" >
 
-    <!--Item layout for transaction history fragment-->
+    <!--Item for wishlist recyclerview options-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -18,22 +18,22 @@
         <ImageView
             android:layout_width="85dp"
             android:layout_height="85dp"
-            android:id="@+id/product_image"
+            android:id="@+id/wishlist_product_image"
             android:background="@drawable/image_view_frame"/>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical"
             android:padding="16dp">
 
             <TextView
-                android:id="@+id/ordered_item_name"
+                android:id="@+id/wishlist_item_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="20dp"
                 android:textStyle="bold"
-                android:text="Ordered Item" />
+                android:text="Wishlist Item" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -44,24 +44,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Date Ordered: " />
+                    android:text="Added on: " />
 
                 <TextView
-                    android:id="@+id/ordered_item_date"
+                    android:id="@+id/wishlist_item_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Jan. 1, 2025" />
 
             </LinearLayout>
-
-            <TextView
-                android:id="@+id/ordered_item_status"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Status" />
-
         </LinearLayout>
 
 
     </LinearLayout>
-    </androidx.cardview.widget.CardView>
+</androidx.cardview.widget.CardView>

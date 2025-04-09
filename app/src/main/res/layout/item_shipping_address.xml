@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="409dp"
+    android:layout_height="wrap_content"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" >
+
+    <!-- The XML item that keeps the order of the shipping address info -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/ship_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name"
+            android:textSize="16dp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/ship_address1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="address1"
+            android:textSize="16dp"/>
+
+        <TextView
+            android:id="@+id/ship_address2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="address2"
+            android:textSize="16dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/ship_city"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="city"
+                android:textSize="16dp"
+                android:paddingRight="6dp"/>
+
+            <TextView
+                android:id="@+id/ship_state"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="state"
+                android:textSize="16dp"
+                android:paddingLeft="2dp"
+                android:paddingRight="6dp"/>
+
+            <TextView
+                android:id="@+id/ship_zip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="zip code"
+                android:textSize="16dp"
+                android:paddingLeft="2dp"
+                android:paddingRight="6dp"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/ship_country"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="country"
+            android:textSize="16dp"
+            android:paddingRight="2dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <!-- Buttons that lead to edit fragment and remove the item from this fragment -->
+
+            <Button
+                android:id="@+id/btn_edit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Edit"/>
+
+            <Button
+                android:id="@+id/btn_remove"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Remove"/>
+        </LinearLayout>
+
+
+
+
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

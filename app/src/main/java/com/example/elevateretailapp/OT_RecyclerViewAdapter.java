@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -35,6 +36,8 @@ public class OT_RecyclerViewAdapter extends RecyclerView.Adapter<OT_RecyclerView
 
         holder.tvOrder.setText(tempList.get(position).getOrderedItem());
         holder.tvDate.setText(tempList.get(position).getOrderedItemDate());
+        holder.tvStatus.setText(tempList.get(position).getOrderedItemStatus());
+        holder.imageView.setImageResource(tempList.get(position).getOrderedImage());
 
     }
 
@@ -45,13 +48,17 @@ public class OT_RecyclerViewAdapter extends RecyclerView.Adapter<OT_RecyclerView
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
 
-        TextView tvOrder, tvDate;
+        TextView tvOrder, tvDate, tvStatus;
+        ImageView imageView;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
+            imageView = itemView.findViewById(R.id.product_image);
             tvOrder = itemView.findViewById(R.id.ordered_item_name);
             tvDate = itemView.findViewById(R.id.ordered_item_date);
+            tvStatus = itemView.findViewById(R.id.ordered_item_status);
+
 
         }
     }

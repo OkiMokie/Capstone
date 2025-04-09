@@ -1,5 +1,6 @@
 package com.example.elevateretailapp;
 
+import android.app.Dialog;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -66,10 +67,12 @@ public class ProfileFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
+
         Button historyBtn = view.findViewById(R.id.btn_transaction_history);
         Button shippingAddressesBtn = view.findViewById(R.id.btn_shipping);
         Button wishlistBtn = view.findViewById(R.id.btn_wishlist);
         Button paymentMethodsBtn = view.findViewById(R.id.btn_payment_methods);
+        Button reviewBtn = view.findViewById(R.id.btn_profile_review);
         RecyclerView RW_recyclerview = view.findViewById(R.id.recent_wishlist_recycler);
         RecyclerView SI_recyclerview = view.findViewById(R.id.suggested_item_recycler);
 
@@ -105,6 +108,7 @@ public class ProfileFragment extends Fragment {
                         .commit()
         );
 
+        //Mock data for recyclerviews in profile page
         ArrayList<ProfileProductItem> mockProfileItems1 = new ArrayList<>();
         mockProfileItems1.add(new ProfileProductItem(R.drawable.product_image, "Pencils", "$12.99"));
         mockProfileItems1.add(new ProfileProductItem(R.drawable.product_image, "One Piece Statue", "$59.99"));
