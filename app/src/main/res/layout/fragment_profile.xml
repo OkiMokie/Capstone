@@ -22,7 +22,7 @@
                 android:layout_marginLeft="4dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="10dp"
-                android:text="Welcome (Name)!"
+                android:text="@string/Hello_User"
                 android:textSize="22dp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@id/LinearLayout"
@@ -103,9 +103,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="10dp"
-                android:layout_marginLeft="4dp"
-                android:text="Suggested Items"
-                android:textSize="18dp"
+                android:layout_marginStart="4dp"
+                android:text="Suggested For You"
+                android:textSize="18sp"
                 android:textStyle="bold"/>
 
             <androidx.recyclerview.widget.RecyclerView
@@ -120,7 +120,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Buy Again"
+            android:text="Discounts"
             android:layout_marginLeft="4dp"
             android:textSize="18dp"
             android:textStyle="bold"/>
@@ -133,28 +133,23 @@
             android:orientation="horizontal"
             android:gravity="center_horizontal">
 
-            <ImageView
-                android:id="@+id/profile_image_1"
+            <include
+                layout="@layout/item_profile_product"
                 android:layout_width="0dp"
-                android:layout_height="95dp"
-                android:layout_weight="1"
-                android:layout_marginEnd="8dp"
-                android:background="@drawable/image_view_frame" />
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
 
-            <ImageView
-                android:id="@+id/profile_image_2"
+            <include
+                layout="@layout/item_profile_product"
                 android:layout_width="0dp"
-                android:layout_height="95dp"
-                android:layout_weight="1"
-                android:layout_marginEnd="8dp"
-                android:background="@drawable/image_view_frame" />
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
 
-            <ImageView
-                android:id="@+id/profile_image_3"
+            <include
+                layout="@layout/item_profile_product"
                 android:layout_width="0dp"
-                android:layout_height="95dp"
-                android:layout_weight="1"
-                android:background="@drawable/image_view_frame" />
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
 
 
         </LinearLayout>
@@ -167,30 +162,23 @@
             android:orientation="horizontal"
             android:gravity="center_horizontal">
 
-            <ImageView
-                android:id="@+id/profile_image_4"
-                android:layout_width="0dp"
-                android:layout_height="95dp"
-                android:layout_weight="1"
-                android:layout_marginEnd="8dp"
-                android:background="@drawable/image_view_frame" />
+            <include
+                layout="@layout/item_profile_product"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
 
-            <ImageView
-                android:id="@+id/profile_image_5"
-                android:layout_width="0dp"
-                android:layout_height="95dp"
-                android:layout_weight="1"
-                android:layout_marginEnd="8dp"
-                android:background="@drawable/image_view_frame" />
+            <include
+                layout="@layout/item_profile_product"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
 
-            <ImageView
-                android:id="@+id/profile_image_6"
-                android:layout_width="0dp"
-                android:layout_height="95dp"
-                android:layout_weight="1"
-                android:background="@drawable/image_view_frame" />
-
-
+            <include
+                layout="@layout/item_profile_product"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
         </LinearLayout>
 
         <LinearLayout
