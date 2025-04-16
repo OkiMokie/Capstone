@@ -41,8 +41,6 @@
                 android:layout_gravity="center"
                 android:text="@string/Hello_User"
                 android:textSize="34sp" />
-
-
         </LinearLayout>
 
         <TextView
@@ -66,37 +64,41 @@
                 android:layout_height="match_parent">
 
                 <include
+                    android:id="@+id/include_new_1"
                     layout="@layout/item_profile_product"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
 
                 <include
+                    android:id="@+id/include_new_2"
                     layout="@layout/item_profile_product"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
 
                 <include
+                    android:id="@+id/include_new_3"
                     layout="@layout/item_profile_product"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"/>
 
                 <include
+                    android:id="@+id/include_new_4"
                     layout="@layout/item_profile_product"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
 
                 <include
+                    android:id="@+id/include_new_5"
                     layout="@layout/item_profile_product"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
 
             </LinearLayout>
-
         </HorizontalScrollView>
 
         <TextView
@@ -122,12 +124,14 @@
                 android:layout_marginBottom="8dp">
 
                 <include
+                    android:id="@+id/include_featured_1_1"
                     layout="@layout/item_profile_product"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
 
                 <include
+                    android:id="@+id/include_featured_1_2"
                     layout="@layout/item_profile_product"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -142,12 +146,14 @@
                 android:layout_marginBottom="8dp">
 
                 <include
+                    android:id="@+id/include_featured_2_1"
                     layout="@layout/item_profile_product"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
 
                 <include
+                    android:id="@+id/include_featured_2_2"
                     layout="@layout/item_profile_product"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -162,12 +168,14 @@
                 android:layout_marginBottom="8dp">
 
                 <include
+                    android:id="@+id/include_featured_3_1"
                     layout="@layout/item_profile_product"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
 
                 <include
+                    android:id="@+id/include_featured_3_2"
                     layout="@layout/item_profile_product"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -182,12 +190,14 @@
                 android:layout_marginBottom="8dp">
 
                 <include
+                    android:id="@+id/include_featured_4_1"
                     layout="@layout/item_profile_product"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
 
                 <include
+                    android:id="@+id/include_featured_4_2"
                     layout="@layout/item_profile_product"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -202,12 +212,14 @@
                 android:layout_marginBottom="8dp">
 
                 <include
+                    android:id="@+id/include_featured_5_1"
                     layout="@layout/item_profile_product"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
 
                 <include
+                    android:id="@+id/include_featured_5_2"
                     layout="@layout/item_profile_product"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -221,23 +233,20 @@
                 android:orientation="horizontal"
                 android:layout_marginBottom="8dp">
 
-                <include layout="@layout/item_profile_product"
+                <include
+                    android:id="@+id/include_featured_6_1"
+                    layout="@layout/item_profile_product"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"/>
 
-                <include layout="@layout/item_profile_product"
+                <include
+                    android:id="@+id/include_featured_6_2"
+                    layout="@layout/item_profile_product"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"/>
             </LinearLayout>
-
-
-    </LinearLayout>
-
-
-
-            <!-- Second Row -->
-
         </LinearLayout>
+    </LinearLayout>
 </ScrollView>

@@ -9,6 +9,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -59,14 +61,34 @@ public class HomeFragment extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.fragment_home2, container, false);
 
-        View view = inflater.inflate(R.layout.fragment_home2, container, false);
+        // Access the product in include_new_1
+        View container1 = rootView.findViewById(R.id.include_new_1);
+        ImageView productImage1 = container1.findViewById(R.id.product_image);
+        TextView productName1 = container1.findViewById(R.id.product_name);
+        TextView productPrice1 = container1.findViewById(R.id.product_price);
+
+        productName1.setText("Sneakers");
+        productPrice1.setText("$59.99");
+        // productImage1.setImageResource(R.drawable.sneakers); // Uncomment when drawable exists
 
 
+        // Access the product in container_new_2
+        View container2 = rootView.findViewById(R.id.include_new_2);  // Ensure this ID exists in XML
+        ImageView productImage2 = container2.findViewById(R.id.product_image);
+        TextView productName2 = container2.findViewById(R.id.product_name);
+        TextView productPrice2 = container2.findViewById(R.id.product_price);
 
-        return view;
+        productName2.setText("Backpack");
+        productPrice2.setText("$39.99");
+        // productImage2.setImageResource(R.drawable.backpack); // Uncomment when drawable exists
+
+        return rootView;
     }
+
+
+
 }
