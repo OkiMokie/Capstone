@@ -17,4 +17,6 @@
     <string name="Hello_User">Hi, User!</string>
     <string name="Image_Description">Description</string>
     <string name="Item_Price">Price</string>
+    <string name="new_arrivals">New Arrivals</string>
+    <string name="featured_items">Featured Items</string>
 </resources>
