@@ -19,4 +19,14 @@
     <string name="Item_Price">Price</string>
     <string name="new_arrivals">New Arrivals</string>
     <string name="featured_items">Featured Items</string>
+    <string name="settings_other">Other</string>
+    <string name="settings_user">User</string>
+    <string name="settingsShipAddressBtn_Text">Shipping Addresses</string>
+    <string name="settingsChangePWBtn_Text">Change Password</string>
+    <string name="settingsCustomerServ_Text">Customer Service</string>
+    <string name="settingsContactUs_Btn">Contact Us</string>
+    <string name="settingsLeaveReview_Btn">Leave A Review</string>
+    <string name="settingsDarkMode_Text">Dark Mode</string>
+
+
 </resources>
