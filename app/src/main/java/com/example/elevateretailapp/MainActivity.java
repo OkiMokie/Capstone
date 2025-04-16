@@ -9,7 +9,6 @@ import androidx.core.graphics.Insets;
 import androidx.fragment.app.Fragment;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import com.example.elevateretailapp.R;
@@ -20,7 +19,6 @@ import android.view.MenuItem;
 import androidx.appcompat.widget.Toolbar;
 
 import androidx.appcompat.widget.SearchView;
-
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,11 +31,10 @@ public class MainActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
-
 
         // the fragments
         Fragment homeFrag = new HomeFragment();
@@ -45,10 +42,13 @@ public class MainActivity extends AppCompatActivity {
         Fragment settingsFrag = new SettingsFragment();
         Fragment cartFrag = new CartFragment();
 
+        // Set the default fragment
         setCurrentFragment(homeFrag);
 
+        // Set listener for bottom navigation items
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
             Fragment selectedFragment = null;
+
             switch (item.getItemId()) {
                 case R.id.Home:
                     selectedFragment = homeFrag;
@@ -61,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case R.id.Cart:
                     selectedFragment = cartFrag;
+                    break;
             }
             if (selectedFragment != null) {
                 setCurrentFragment(selectedFragment);
@@ -68,26 +69,23 @@ public class MainActivity extends AppCompatActivity {
             return true;
         });
 
-
+        // Adjust for edge-to-edge experience
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.ConstraintLayout), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
     }
 
-
-    // sets the current fragment on the screen
+    // Method to set the current fragment
     void setCurrentFragment(Fragment fragment) {
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.FragmentContainer, fragment)
+                .addToBackStack(null) // This ensures we can go back to the previous fragment
                 .commit();
     }
 
-
-    // TODO: somebody please add a description to this lol -Teresa
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();

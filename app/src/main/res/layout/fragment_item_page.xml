@@ -15,7 +15,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/SellerTextView"
@@ -23,8 +23,7 @@
                 android:layout_height="wrap_content"
                 android:background="@color/white"
                 android:text="Seller"
-                android:padding="5dp"
-                />
+                android:padding="5dp" />
 
             <TextView
                 android:id="@+id/ItemDescriptionTextView"
@@ -33,8 +32,7 @@
                 android:background="@color/white"
                 android:text="Description goes here"
                 android:minHeight="100dp"
-                android:padding="5dp"
-                />
+                android:padding="5dp" />
 
             <ImageView
                 android:id="@+id/ProductImageView"
@@ -44,50 +42,81 @@
                 android:layout_gravity="center"
                 android:layout_marginBottom="5dp"
                 android:src="@drawable/product_image"
-                android:background="@color/white"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/SellerTextView"
-                app:layout_constraintBottom_toTopOf="@+id/ProductPriceTagTextView"
-                />
+                android:background="@color/white" />
 
             <TextView
                 android:id="@+id/ProductPriceTagTextView"
-                android:background="@color/white"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/white"
                 android:padding="5dp"
                 android:text="$0.00" />
 
+            <!-- Buy Now CardView -->
             <androidx.cardview.widget.CardView
+                android:id="@+id/buttonCardView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:background="@color/white"
                 android:minHeight="40dp"
-                app:cardCornerRadius="0dp">
+                app:cardCornerRadius="0dp"
+                app:cardElevation="0dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="5dp"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:padding="10dp"
+                    android:gravity="center">
 
                     <Button
                         android:id="@+id/BuyNowButton"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Buy Now"
                         android:textColor="#FFFFFF"
-                        android:padding="10dp"
-                        android:layout_gravity="center"/>
+
+                        android:padding="10dp" />
 
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
 
+            <!-- Add to Cart CardView -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/AddToCartCardView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:minHeight="40dp"
+                app:cardCornerRadius="0dp"
+                app:cardElevation="0dp">
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="10dp"
+                    android:gravity="center">
+
+                    <Button
+                        android:id="@+id/AddToCartBtn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:text="Add To Cart" />
+
+                    <TextView
+                        android:id="@+id/detailsTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:padding="5dp"
+                        android:text="Additional details about the product here" />
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
 
         </LinearLayout>
     </ScrollView>
