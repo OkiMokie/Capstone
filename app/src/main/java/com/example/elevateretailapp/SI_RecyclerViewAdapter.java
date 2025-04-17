@@ -11,6 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+
+//The adapter used for the suggested items recyclerview in the profile page
 class SI_RecyclerViewAdapter extends RecyclerView.Adapter<SI_RecyclerViewAdapter.MyViewHolder>{
 
     Context context;

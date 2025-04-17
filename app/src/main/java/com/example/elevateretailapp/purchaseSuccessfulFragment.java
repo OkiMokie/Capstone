@@ -7,14 +7,13 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link CheckoutFragment#newInstance} factory method to
+ * Use the {@link purchaseSuccessfulFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class CheckoutFragment extends Fragment {
+public class purchaseSuccessfulFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -25,7 +24,7 @@ public class CheckoutFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public CheckoutFragment() {
+    public purchaseSuccessfulFragment() {
         // Required empty public constructor
     }
 
@@ -35,11 +34,11 @@ public class CheckoutFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment CheckoutFragment.
+     * @return A new instance of fragment purchaseSuccessfulFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static CheckoutFragment newInstance(String param1, String param2) {
-        CheckoutFragment fragment = new CheckoutFragment();
+    public static purchaseSuccessfulFragment newInstance(String param1, String param2) {
+        purchaseSuccessfulFragment fragment = new purchaseSuccessfulFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -60,18 +59,6 @@ public class CheckoutFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_checkout, container, false);
-
-        // ref the button
-        Button placeOrderBtn = view.findViewById(R.id.placeYourOrderBtn);
-
-        // button listener
-        placeOrderBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ((MainActivity) getActivity()).setCurrentFragment(new purchaseSuccessfulFragment());
-            }
-        });
-        return view;
+        return inflater.inflate(R.layout.fragment_purchase_successful, container, false);
     }
 }

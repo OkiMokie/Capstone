@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     android:padding="4dp">
 
+    <!-- Back button and recycler showing transactions ordered -->
+
     <Button
         android:id="@+id/back_to_profile_btn"
         android:layout_width="wrap_content"

@@ -27,8 +27,7 @@ android {
         }
     }
 
-    buildFeatures{
-
+    buildFeatures {
         viewBinding = true
         dataBinding = true
     }
@@ -39,14 +38,20 @@ android {
     }
 }
 
-
 dependencies {
 
-    implementation(libs.appcompat)
+    // Replace old support libraries with AndroidX equivalents
+    implementation(libs.appcompat) // This references androidx.appcompat
     implementation(libs.material)
     implementation(libs.activity)
     implementation(libs.constraintlayout)
     implementation("com.google.android.material:material:1.12.0")
+
+    // Remove old support library
+    // implementation("com.android.support:appcompat-v7:28.0.0")  <-- Removed this line
+
+    implementation(libs.volley)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)

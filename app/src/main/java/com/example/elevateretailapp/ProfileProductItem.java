@@ -1,5 +1,6 @@
 package com.example.elevateretailapp;
 
+//The object created for the items/products in the profile page that show name, image, and price
 class ProfileProductItem {
     int productImage;
     String productName;
