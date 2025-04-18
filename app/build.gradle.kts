@@ -51,6 +51,8 @@ dependencies {
     // implementation("com.android.support:appcompat-v7:28.0.0")  <-- Removed this line
 
     implementation(libs.volley)
+    implementation(libs.tracing.perfetto.handshake)
+    implementation(libs.games.activity)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
