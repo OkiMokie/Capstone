@@ -19,7 +19,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 public class APICon {
-    // urls
+    // endpoints
     public static final String API_URL = "http://137.184.40.118:5000";
     public static final String Shipping_URL = API_URL + "/shipping";
     public static final String Product_URL = API_URL + "/product";

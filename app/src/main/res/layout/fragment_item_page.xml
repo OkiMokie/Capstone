@@ -112,6 +112,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@color/white"
+                        android:minHeight="200dp"
                         android:padding="5dp"
                         android:text="Additional details about the product here" />
                 </LinearLayout>
