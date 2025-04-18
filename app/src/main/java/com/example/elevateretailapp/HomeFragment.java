@@ -5,12 +5,17 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -65,26 +70,37 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_home2, container, false);
 
-        // Access the product in include_new_1
-        View container1 = rootView.findViewById(R.id.include_new_1);
-        ImageView productImage1 = container1.findViewById(R.id.product_image);
-        TextView productName1 = container1.findViewById(R.id.product_name);
-        TextView productPrice1 = container1.findViewById(R.id.product_price);
+        RecyclerView arrivalsRecycler = rootView.findViewById(R.id.new_arrivals_recycler);
+        RecyclerView featuredRecycler = rootView.findViewById(R.id.featured_items_recycler);
 
-        productName1.setText("Sneakers");
-        productPrice1.setText("$59.99");
-        // productImage1.setImageResource(R.drawable.sneakers); // Uncomment when drawable exists
+        ArrayList<ProfileProductItem> newArrivalsList = new ArrayList();
+        newArrivalsList.add(new ProfileProductItem(R.drawable.product_image, "Backpack", "$39.99"));
+        newArrivalsList.add(new ProfileProductItem(R.drawable.product_image, "Sunglasses", "$24.99"));
+        newArrivalsList.add(new ProfileProductItem(R.drawable.product_image, "Gaming Mouse", "$49.99"));
+        newArrivalsList.add(new ProfileProductItem(R.drawable.product_image, "Bluetooth Speaker", "$89.99"));
+        newArrivalsList.add(new ProfileProductItem(R.drawable.product_image, "Water Bottle", "$14.99"));
 
+        HomeArrivals_RecyclerViewAdapter adapter1 = new HomeArrivals_RecyclerViewAdapter(newArrivalsList, getContext());
+        arrivalsRecycler.setAdapter(adapter1);
+        arrivalsRecycler.setLayoutManager(new LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL, false));
 
-        // Access the product in container_new_2
-        View container2 = rootView.findViewById(R.id.include_new_2);  // Ensure this ID exists in XML
-        ImageView productImage2 = container2.findViewById(R.id.product_image);
-        TextView productName2 = container2.findViewById(R.id.product_name);
-        TextView productPrice2 = container2.findViewById(R.id.product_price);
+        ArrayList<ProfileProductItem> featuredList = new ArrayList();
+        featuredList.add(new ProfileProductItem(R.drawable.product_image, "Hoodie", "$34.99"));
+        featuredList.add(new ProfileProductItem(R.drawable.product_image, "Smart Watch", "$129.99"));
+        featuredList.add(new ProfileProductItem(R.drawable.product_image, "Desk Organizer", "$22.99"));
+        featuredList.add(new ProfileProductItem(R.drawable.product_image, "Portable Hard Drive", "$69.99"));
+        featuredList.add(new ProfileProductItem(R.drawable.product_image, "Headphones", "$99.99"));
+        featuredList.add(new ProfileProductItem(R.drawable.product_image, "Tote Bag", "$18.99"));
+        featuredList.add(new ProfileProductItem(R.drawable.product_image, "Wireless Charger", "$29.99"));
+        featuredList.add(new ProfileProductItem(R.drawable.product_image, "LED Desk Lamp", "$45.99"));
+        featuredList.add(new ProfileProductItem(R.drawable.product_image, "Noise-Canceling Earbuds", "$79.99"));
+        featuredList.add(new ProfileProductItem(R.drawable.product_image, "Fitness Tracker", "$54.99"));
+        featuredList.add(new ProfileProductItem(R.drawable.product_image, "Mini Projector", "$119.99"));
+        featuredList.add(new ProfileProductItem(R.drawable.product_image, "Laptop Stand", "$38.99"));
 
-        productName2.setText("Backpack");
-        productPrice2.setText("$39.99");
-        // productImage2.setImageResource(R.drawable.backpack); // Uncomment when drawable exists
+        HomeFeatured_RecyclerViewAdapter adapter2 = new HomeFeatured_RecyclerViewAdapter(featuredList, getContext());
+        featuredRecycler.setAdapter(adapter2);
+        featuredRecycler.setLayoutManager(new GridLayoutManager(requireContext(), 2));
 
         return rootView;
     }
