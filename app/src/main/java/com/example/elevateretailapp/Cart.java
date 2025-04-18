@@ -6,22 +6,21 @@ import java.util.List;
 // cart frag
 public class Cart {
     // attributes
-    List<Product> products = new ArrayList<>();
-    int size = products.size();
+    List<ProfileProductItem> ProfileProductItems = new ArrayList<>();
+    int size = ProfileProductItems.size();
 
     // constructor
     public Cart(List<Product> products){
-        this.products = products;
+        this.ProfileProductItems = ProfileProductItems;
     }
 
     // add to cart
-    public void addToCart(Product product){
-        products.add(product);
+    public void addToCart(ProfileProductItem profileProductItem){
+        ProfileProductItems.add(profileProductItem);
     }
 
     // remove from cart
-    public void removeFromCart(Product product){
-        products.remove(product);
+    public void removeFromCart(ProfileProductItem profileProductItem){
+        ProfileProductItems.remove(profileProductItem);
     }
-
 }

@@ -1,18 +1,19 @@
 package com.example.elevateretailapp;
 
 import android.content.Context;
+
 import com.android.volley.Request;
 import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+
+import org.json.JSONArray;
 
 public class APIHelper {
 
-    public static void fetchJSONArray(Context context, String url,
-                                      Response.Listener<org.json.JSONArray> listener,
-                                      Response.ErrorListener errorListener) {
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null, listener, errorListener);
-        VolleySingleton.getInstance(context).addToRequestQueue(jsonArrayRequest);
+    public static void fetchAllProducts(Context context, Response.Listener<JSONArray> listener, Response.ErrorListener errorListener) {
+        String url = APICon.Product_URL;
+        JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, listener, errorListener);
+        VolleySingleton.getInstance(context).addToRequestQueue(request);
     }
-
-    // Optional: add fetchJSONObject() or fetchString() here if you need those later
 }

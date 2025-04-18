@@ -2,9 +2,10 @@ package com.example.elevateretailapp;
 
 //The object created for the items/products in the profile page that show name, image, and price
 class ProfileProductItem {
-    int productImage;
-    String productName;
-    String productPrice;
+    private int productImage;
+    private String productName;
+    private String productPrice;
+    private int id;
 
     public ProfileProductItem(int productImage, String productName, String productPrice) {
         this.productImage = productImage;

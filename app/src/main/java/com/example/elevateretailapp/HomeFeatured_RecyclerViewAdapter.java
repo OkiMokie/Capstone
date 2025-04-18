@@ -14,28 +14,36 @@ import java.util.ArrayList;
 
 public class HomeFeatured_RecyclerViewAdapter extends RecyclerView.Adapter<HomeFeatured_RecyclerViewAdapter.MyViewHolder> {
 
-    Context context;
-    ArrayList<ProfileProductItem> homeFeaturedItemList;
+    private Context context;
+    private ArrayList<ProfileProductItem> homeFeaturedItemList;
+    private OnProductClickListener listener;
 
-    public HomeFeatured_RecyclerViewAdapter(ArrayList<ProfileProductItem> homeProductItemList, Context context) {
+    public HomeFeatured_RecyclerViewAdapter(ArrayList<ProfileProductItem> homeProductItemList, Context context, OnProductClickListener listener) {
         this.homeFeaturedItemList = homeProductItemList;
         this.context = context;
+        this.listener = listener;
     }
-
 
     @NonNull
     @Override
-    public HomeFeatured_RecyclerViewAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.item_profile_product, parent, false);
-        return new HomeFeatured_RecyclerViewAdapter.MyViewHolder(view);
+        return new MyViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull HomeFeatured_RecyclerViewAdapter.MyViewHolder holder, int position) {
-        holder.productName.setText(homeFeaturedItemList.get(position).getProductName());
-        holder.productPrice.setText(homeFeaturedItemList.get(position).getProductPrice());
-        holder.productImage.setImageResource(homeFeaturedItemList.get(position).getProductImage());
+    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+        ProfileProductItem item = homeFeaturedItemList.get(position);
+        holder.productName.setText(item.getProductName());
+        holder.productPrice.setText(item.getProductPrice());
+        holder.productImage.setImageResource(item.getProductImage());
+
+        holder.itemView.setOnClickListener(v -> {
+            if (listener != null) {
+                listener.onProductClick(item);
+            }
+        });
     }
 
     @Override
@@ -43,8 +51,7 @@ public class HomeFeatured_RecyclerViewAdapter extends RecyclerView.Adapter<HomeF
         return homeFeaturedItemList.size();
     }
 
-    public static class MyViewHolder extends RecyclerView.ViewHolder{
-
+    public static class MyViewHolder extends RecyclerView.ViewHolder {
         TextView productName, productPrice;
         ImageView productImage;
 
@@ -53,7 +60,6 @@ public class HomeFeatured_RecyclerViewAdapter extends RecyclerView.Adapter<HomeF
             productName = itemView.findViewById(R.id.product_name);
             productPrice = itemView.findViewById(R.id.product_price);
             productImage = itemView.findViewById(R.id.product_image);
-
         }
     }
 }

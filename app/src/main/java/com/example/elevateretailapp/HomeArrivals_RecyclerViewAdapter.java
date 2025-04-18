@@ -14,14 +14,15 @@ import java.util.ArrayList;
 
 public class HomeArrivals_RecyclerViewAdapter extends RecyclerView.Adapter<HomeArrivals_RecyclerViewAdapter.MyViewHolder> {
 
-    Context context;
-    ArrayList<ProfileProductItem> homeProductItemList;
+    private Context context;
+    private ArrayList<ProfileProductItem> homeProductItemList;
+    private OnProductClickListener listener;
 
-    public HomeArrivals_RecyclerViewAdapter(ArrayList<ProfileProductItem> homeProductItemList, Context context) {
+    public HomeArrivals_RecyclerViewAdapter(ArrayList<ProfileProductItem> homeProductItemList, Context context, OnProductClickListener listener) {
         this.homeProductItemList = homeProductItemList;
         this.context = context;
+        this.listener = listener;
     }
-
 
     @NonNull
     @Override
@@ -33,9 +34,17 @@ public class HomeArrivals_RecyclerViewAdapter extends RecyclerView.Adapter<HomeA
 
     @Override
     public void onBindViewHolder(@NonNull HomeArrivals_RecyclerViewAdapter.MyViewHolder holder, int position) {
-        holder.productName.setText(homeProductItemList.get(position).getProductName());
-        holder.productPrice.setText(homeProductItemList.get(position).getProductPrice());
-        holder.productImage.setImageResource(homeProductItemList.get(position).getProductImage());
+        ProfileProductItem item = homeProductItemList.get(position);
+
+        holder.productName.setText(item.getProductName());
+        holder.productPrice.setText(item.getProductPrice());
+        holder.productImage.setImageResource(item.getProductImage());
+
+        holder.itemView.setOnClickListener(v -> {
+            if (listener != null) {
+                listener.onProductClick(item);
+            }
+        });
     }
 
     @Override
@@ -43,7 +52,7 @@ public class HomeArrivals_RecyclerViewAdapter extends RecyclerView.Adapter<HomeA
         return homeProductItemList.size();
     }
 
-    public static class MyViewHolder extends RecyclerView.ViewHolder{
+    public static class MyViewHolder extends RecyclerView.ViewHolder {
 
         TextView productName, productPrice;
         ImageView productImage;
@@ -54,7 +63,6 @@ public class HomeArrivals_RecyclerViewAdapter extends RecyclerView.Adapter<HomeA
             productName = itemView.findViewById(R.id.product_name);
             productPrice = itemView.findViewById(R.id.product_price);
             productImage = itemView.findViewById(R.id.product_image);
-
         }
     }
 }
