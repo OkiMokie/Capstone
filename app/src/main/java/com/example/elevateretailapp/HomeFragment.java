@@ -63,6 +63,8 @@ public class HomeFragment extends Fragment {
                         JSONObject obj = response.getJSONObject(i);
                         String name = obj.getString("name");
                         String price = "$" + obj.getDouble("price");
+                        // todo: REFER BACK HERE TERESA
+                        String image_URL = obj.getString("image_url");
                         newArrivalsList.add(new ProfileProductItem(R.drawable.product_image, name, price));
                     }
                 } catch (JSONException e) {
@@ -75,7 +77,6 @@ public class HomeFragment extends Fragment {
                         new OnProductClickListener() {
                             @Override
                             public void onProductClick(ProfileProductItem item) {
-                                Toast.makeText(getContext(), "Clicked: " + item.getProductName(), Toast.LENGTH_SHORT).show();
                                 if (getActivity() instanceof MainActivity) {
                                     ((MainActivity) getActivity()).setCurrentFragment(new itemPage());
                                 }
@@ -116,7 +117,6 @@ public class HomeFragment extends Fragment {
                         new OnProductClickListener() {
                             @Override
                             public void onProductClick(ProfileProductItem item) {
-                                Toast.makeText(getContext(), "Featured Click: " + item.getProductName(), Toast.LENGTH_SHORT).show();
                                 if (getActivity() instanceof MainActivity) {
                                     ((MainActivity) getActivity()).setCurrentFragment(new itemPage());
                                 }
@@ -124,7 +124,7 @@ public class HomeFragment extends Fragment {
                         }
                 );
                 featuredRecycler.setAdapter(adapter);
-                featuredRecycler.setLayoutManager(new GridLayoutManager(requireContext(), 2));
+                featuredRecycler.setLayoutManager(new GridLayoutManager(requireContext(), 3));
             }
         }, new Response.ErrorListener() {
             @Override
