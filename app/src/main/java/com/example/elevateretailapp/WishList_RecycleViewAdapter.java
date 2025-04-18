@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -13,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 //The adapter used for the Wishlist recyclerview in the Wishlist fragment
-public class WishList_RecycleViewAdapter extends RecyclerView.Adapter<PurchaseSuccessful_RecyclerViewAdapter.MyViewHolder> {
+public class WishList_RecycleViewAdapter extends RecyclerView.Adapter<WishList_RecycleViewAdapter.MyViewHolder> {
 
     Context context;
     ArrayList<WishlistItem> wishList;
@@ -25,14 +26,14 @@ public class WishList_RecycleViewAdapter extends RecyclerView.Adapter<PurchaseSu
 
     @NonNull
     @Override
-    public PurchaseSuccessful_RecyclerViewAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public WishList_RecycleViewAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.item_wishlist_product, parent, false);
-        return new PurchaseSuccessful_RecyclerViewAdapter.MyViewHolder(view);
+        return new WishList_RecycleViewAdapter.MyViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull PurchaseSuccessful_RecyclerViewAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull WishList_RecycleViewAdapter.MyViewHolder holder, int position) {
         holder.itemName.setText(wishList.get(position).getItemName());
         holder.itemDate.setText(wishList.get(position).getItemDate());
         holder.itemImage.setImageResource(wishList.get(position).getItemImage());
