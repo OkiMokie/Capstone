@@ -53,53 +53,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/helloUser" />
 
-        <HorizontalScrollView
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/new_arrivals_recycler"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
             android:background="@drawable/image_view_frame"
-            android:padding="8dp">
+            android:padding="6dp"
+            android:orientation="horizontal">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <include
-                    android:id="@+id/include_new_1"
-                    layout="@layout/item_profile_product"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-
-                <include
-                    android:id="@+id/include_new_2"
-                    layout="@layout/item_profile_product"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-
-                <include
-                    android:id="@+id/include_new_3"
-                    layout="@layout/item_profile_product"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"/>
-
-                <include
-                    android:id="@+id/include_new_4"
-                    layout="@layout/item_profile_product"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-
-                <include
-                    android:id="@+id/include_new_5"
-                    layout="@layout/item_profile_product"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-
-            </LinearLayout>
-        </HorizontalScrollView>
+        </androidx.recyclerview.widget.RecyclerView>
 
         <TextView
             android:layout_width="wrap_content"
@@ -108,145 +71,17 @@
             android:textSize="18sp"
             android:textStyle="bold"/>
 
-        <LinearLayout
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/featured_items_recycler"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:layout_marginBottom="12dp"
             android:background="@drawable/image_view_frame"
-            android:padding="16dp">
+            android:padding="6dp"
+            android:orientation="horizontal">
 
-            <!-- First Row -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:baselineAligned="false"
-                android:orientation="horizontal"
-                android:layout_marginBottom="8dp">
+        </androidx.recyclerview.widget.RecyclerView>
 
-                <include
-                    android:id="@+id/include_featured_1_1"
-                    layout="@layout/item_profile_product"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
 
-                <include
-                    android:id="@+id/include_featured_1_2"
-                    layout="@layout/item_profile_product"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:baselineAligned="false"
-                android:orientation="horizontal"
-                android:layout_marginBottom="8dp">
-
-                <include
-                    android:id="@+id/include_featured_2_1"
-                    layout="@layout/item_profile_product"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-
-                <include
-                    android:id="@+id/include_featured_2_2"
-                    layout="@layout/item_profile_product"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:baselineAligned="false"
-                android:orientation="horizontal"
-                android:layout_marginBottom="8dp">
-
-                <include
-                    android:id="@+id/include_featured_3_1"
-                    layout="@layout/item_profile_product"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-
-                <include
-                    android:id="@+id/include_featured_3_2"
-                    layout="@layout/item_profile_product"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:baselineAligned="false"
-                android:orientation="horizontal"
-                android:layout_marginBottom="8dp">
-
-                <include
-                    android:id="@+id/include_featured_4_1"
-                    layout="@layout/item_profile_product"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-
-                <include
-                    android:id="@+id/include_featured_4_2"
-                    layout="@layout/item_profile_product"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:baselineAligned="false"
-                android:orientation="horizontal"
-                android:layout_marginBottom="8dp">
-
-                <include
-                    android:id="@+id/include_featured_5_1"
-                    layout="@layout/item_profile_product"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-
-                <include
-                    android:id="@+id/include_featured_5_2"
-                    layout="@layout/item_profile_product"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:baselineAligned="false"
-                android:orientation="horizontal"
-                android:layout_marginBottom="8dp">
-
-                <include
-                    android:id="@+id/include_featured_6_1"
-                    layout="@layout/item_profile_product"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"/>
-
-                <include
-                    android:id="@+id/include_featured_6_2"
-                    layout="@layout/item_profile_product"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"/>
-            </LinearLayout>
-        </LinearLayout>
     </LinearLayout>
 </ScrollView>
