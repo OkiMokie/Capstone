@@ -8,8 +8,6 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageButton;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -62,18 +60,6 @@ public class SettingsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-
-        View view = inflater.inflate(R.layout.fragment_settings, container, false);
-        ImageButton exitButton = view.findViewById(R.id.closeSettingBtn);
-
-        exitButton.setOnClickListener(v ->
-                requireActivity()
-                        .getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.FragmentContainer, new HomeFragment())
-                        .commit()
-        );
-
-        return view;
+        return inflater.inflate(R.layout.fragment_settings, container, false);
     }
 }
