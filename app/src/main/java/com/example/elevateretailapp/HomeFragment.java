@@ -84,6 +84,7 @@ public class HomeFragment extends Fragment {
         HomeArrivals_RecyclerViewAdapter adapter1 = new HomeArrivals_RecyclerViewAdapter(newArrivalsList, getContext());
         arrivalsRecycler.setAdapter(adapter1);
         arrivalsRecycler.setLayoutManager(new LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL, false));
+
         ArrayList<ProfileProductItem> featuredList = new ArrayList();
         featuredList.add(new ProfileProductItem(R.drawable.product_image, "Hoodie", "$34.99"));
         featuredList.add(new ProfileProductItem(R.drawable.product_image, "Smart Watch", "$129.99"));
@@ -97,6 +98,7 @@ public class HomeFragment extends Fragment {
         featuredList.add(new ProfileProductItem(R.drawable.product_image, "Fitness Tracker", "$54.99"));
         featuredList.add(new ProfileProductItem(R.drawable.product_image, "Mini Projector", "$119.99"));
         featuredList.add(new ProfileProductItem(R.drawable.product_image, "Laptop Stand", "$38.99"));
+
         com.example.elevateretailapp.HomeFeatured_RecyclerViewAdapter adapter2 = new com.example.elevateretailapp.HomeFeatured_RecyclerViewAdapter(featuredList, getContext());
         featuredRecycler.setAdapter(adapter2);
         featuredRecycler.setLayoutManager(new GridLayoutManager(requireContext(), 2));
