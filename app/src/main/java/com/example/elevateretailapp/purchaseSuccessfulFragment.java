@@ -3,14 +3,10 @@ package com.example.elevateretailapp;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -63,20 +59,6 @@ public class purchaseSuccessfulFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_purchase_successful, container, false);
-        RecyclerView successfulRecyclerView = view.findViewById(R.id.purchased_item_recycler);
-
-        ArrayList<WishlistItem> successfulPurchaseList = new ArrayList<>();
-        successfulPurchaseList.add(new WishlistItem("Purchased thing 1", "This date", R.drawable.product_image));
-        successfulPurchaseList.add(new WishlistItem("Purchased thing 2", "This date", R.drawable.product_image));
-        successfulPurchaseList.add(new WishlistItem("Purchased thing 3", "This date", R.drawable.product_image));
-        successfulPurchaseList.add(new WishlistItem("Purchased thing 4", "This date", R.drawable.product_image));
-
-        PurchaseSuccessful_RecyclerViewAdapter adapter = new PurchaseSuccessful_RecyclerViewAdapter(requireContext(), successfulPurchaseList);
-        successfulRecyclerView.setAdapter(adapter);
-        successfulRecyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
-
-
-        return view;
+        return inflater.inflate(R.layout.fragment_purchase_successful, container, false);
     }
 }
