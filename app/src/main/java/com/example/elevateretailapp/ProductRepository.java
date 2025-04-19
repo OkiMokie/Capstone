@@ -1,12 +1,13 @@
-// ProductRepository.java
 package com.example.elevateretailapp;
 
 import android.content.Context;
 import com.android.volley.Request;
 import com.android.volley.toolbox.JsonArrayRequest;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,7 +34,8 @@ public class ProductRepository {
                                     obj.getString("product_description"),
                                     obj.getInt("category_id"),
                                     obj.getInt("supplier_id"),
-                                    obj.getString("image_url")
+                                    R.drawable.product_image, // Placeholder image; replace with real logic later
+                                    obj.getString("price")
                             );
 
                             productList.add(product);

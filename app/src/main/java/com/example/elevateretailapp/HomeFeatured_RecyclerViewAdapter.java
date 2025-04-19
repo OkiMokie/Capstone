@@ -15,10 +15,10 @@ import java.util.ArrayList;
 public class HomeFeatured_RecyclerViewAdapter extends RecyclerView.Adapter<HomeFeatured_RecyclerViewAdapter.MyViewHolder> {
 
     private Context context;
-    private ArrayList<ProfileProductItem> homeFeaturedItemList;
+    private ArrayList<Product> homeFeaturedItemList;
     private OnProductClickListener listener;
 
-    public HomeFeatured_RecyclerViewAdapter(ArrayList<ProfileProductItem> homeProductItemList, Context context, OnProductClickListener listener) {
+    public HomeFeatured_RecyclerViewAdapter(ArrayList<Product> homeProductItemList, Context context, OnProductClickListener listener) {
         this.homeFeaturedItemList = homeProductItemList;
         this.context = context;
         this.listener = listener;
@@ -34,10 +34,10 @@ public class HomeFeatured_RecyclerViewAdapter extends RecyclerView.Adapter<HomeF
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        ProfileProductItem item = homeFeaturedItemList.get(position);
-        holder.productName.setText(item.getProductName());
-        holder.productPrice.setText(item.getProductPrice());
-        holder.productImage.setImageResource(item.getProductImage());
+        Product item = homeFeaturedItemList.get(position);
+        holder.productName.setText(item.getProduct_name());
+        holder.productPrice.setText(item.getPrice());
+        holder.productImage.setImageResource(item.getImageResId());
 
         holder.itemView.setOnClickListener(v -> {
             if (listener != null) {
