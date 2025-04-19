@@ -5,7 +5,6 @@ class ProfileProductItem {
     private int productImage;
     private String productName;
     private String productPrice;
-    private int id;
 
     public ProfileProductItem(int productImage, String productName, String productPrice) {
         this.productImage = productImage;

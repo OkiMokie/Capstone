@@ -11,11 +11,9 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.tracing.perfetto.handshake.protocol.Response;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.google.androidgamesdk.gametextinput.Listener;
 
 import org.json.JSONArray;
 import org.json.JSONException;
