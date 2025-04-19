@@ -1,25 +1,24 @@
 package com.example.elevateretailapp;
 
 public class Product {
-    // columns/attributes
     private int product_id;
     private String product_name;
     private String product_description;
     private int category_id;
     private int supplier_id;
-    private String image_url;
+    private int imageResId; // drawable resource ID
+    private String price; // price as a String like "$9.99"
 
-    // Default constructor (required for some libraries like Retrofit, Gson, Firebase, etc.)
     public Product() {}
 
-    // Full constructor
-    public Product(int product_id, String product_name, String product_description, int category_id, int supplier_id, String image_url) {
+    public Product(int product_id, String product_name, String product_description, int category_id, int supplier_id, int imageResId, String price) {
         this.product_id = product_id;
         this.product_name = product_name;
         this.product_description = product_description;
         this.category_id = category_id;
         this.supplier_id = supplier_id;
-        this.image_url = image_url;
+        this.imageResId = imageResId;
+        this.price = price;
     }
 
     // Getters and Setters
@@ -63,12 +62,20 @@ public class Product {
         this.supplier_id = supplier_id;
     }
 
-    public String getImage_url() {
-        return image_url;
+    public int getImageResId() {
+        return imageResId;
     }
 
-    public void setImage_url(String image_url) {
-        this.image_url = image_url;
+    public void setImageResId(int imageResId) {
+        this.imageResId = imageResId;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
     }
 
     @Override
@@ -79,7 +86,8 @@ public class Product {
                 ", product_description='" + product_description + '\'' +
                 ", category_id=" + category_id +
                 ", supplier_id=" + supplier_id +
-                ", image_url='" + image_url + '\'' +
+                ", imageResId=" + imageResId +
+                ", price='" + price + '\'' +
                 '}';
     }
 }

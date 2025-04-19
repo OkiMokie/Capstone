@@ -57,15 +57,19 @@ public class HomeFragment extends Fragment {
         APIHelper.fetchAllProducts(getContext(), new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
-                ArrayList<ProfileProductItem> newArrivalsList = new ArrayList<>();
+                ArrayList<Product> newArrivalsList = new ArrayList<>();
                 try {
                     for (int i = 0; i < Math.min(6, response.length()); i++) {
                         JSONObject obj = response.getJSONObject(i);
+
+                        int product_id = obj.getInt("id");
                         String name = obj.getString("name");
-                        String price = "$" + obj.getDouble("price");
-                        // todo: REFER BACK HERE TERESA
-                        String image_URL = obj.getString("image_url");
-                        newArrivalsList.add(new ProfileProductItem(R.drawable.product_image, name, price));
+                        String description = obj.getString("description");
+                        int category_id = obj.getInt("category_id");
+                        int supplier_id = obj.getInt("supplier_id");
+                        String price = obj.getString("price");
+
+                        newArrivalsList.add(new Product(product_id, name, description, category_id, supplier_id, R.drawable.product_image, price));
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -76,9 +80,20 @@ public class HomeFragment extends Fragment {
                         getContext(),
                         new OnProductClickListener() {
                             @Override
-                            public void onProductClick(ProfileProductItem item) {
+                            public void onProductClick(Product item) {
                                 if (getActivity() instanceof MainActivity) {
-                                    ((MainActivity) getActivity()).setCurrentFragment(new itemPage());
+                                    ((MainActivity) getActivity()).setCurrentFragment(
+                                            new itemPage(
+                                                    item.getProduct_id(),
+                                                    item.getProduct_name(),
+                                                    item.getProduct_description(),
+                                                    item.getCategory_id(),
+                                                    item.getSupplier_id(),
+                                                    item.getImageResId(),
+                                                    item.getPrice()
+                                            )
+                                    );
+
                                 }
                             }
                         }
@@ -99,13 +114,19 @@ public class HomeFragment extends Fragment {
         APIHelper.fetchAllProducts(getContext(), new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
-                ArrayList<ProfileProductItem> featuredList = new ArrayList<>();
+                ArrayList<Product> featuredList = new ArrayList<>();
                 try {
                     for (int i = 6; i < Math.min(18, response.length()); i++) {
                         JSONObject obj = response.getJSONObject(i);
+
+                        int product_id = obj.getInt("id");
                         String name = obj.getString("name");
-                        String price = "$" + obj.getDouble("price");
-                        featuredList.add(new ProfileProductItem(R.drawable.product_image, name, price));
+                        String description = obj.getString("description");
+                        int category_id = obj.getInt("category_id");
+                        int supplier_id = obj.getInt("supplier_id");
+                        String price = obj.getString("price");
+
+                        featuredList.add(new Product(product_id, name, description, category_id, supplier_id, R.drawable.product_image, price));
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -116,9 +137,20 @@ public class HomeFragment extends Fragment {
                         getContext(),
                         new OnProductClickListener() {
                             @Override
-                            public void onProductClick(ProfileProductItem item) {
+                            public void onProductClick(Product item) {
                                 if (getActivity() instanceof MainActivity) {
-                                    ((MainActivity) getActivity()).setCurrentFragment(new itemPage());
+                                    ((MainActivity) getActivity()).setCurrentFragment(
+                                            new itemPage(
+                                                    item.getProduct_id(),
+                                                    item.getProduct_name(),
+                                                    item.getProduct_description(),
+                                                    item.getCategory_id(),
+                                                    item.getSupplier_id(),
+                                                    item.getImageResId(),
+                                                    item.getPrice()
+                                            )
+                                    );
+
                                 }
                             }
                         }

@@ -16,8 +16,8 @@ import java.util.ArrayList;
 class SI_RecyclerViewAdapter extends RecyclerView.Adapter<SI_RecyclerViewAdapter.MyViewHolder>{
 
     Context context;
-    ArrayList<ProfileProductItem> suggestedItemsList;
-    public SI_RecyclerViewAdapter(Context context, ArrayList<ProfileProductItem> suggestedItemsList) {
+    ArrayList<Product> suggestedItemsList;
+    public SI_RecyclerViewAdapter(Context context, ArrayList<Product> suggestedItemsList) {
         this.context = context;
         this.suggestedItemsList = suggestedItemsList;
     }
@@ -33,9 +33,9 @@ class SI_RecyclerViewAdapter extends RecyclerView.Adapter<SI_RecyclerViewAdapter
     @Override
     public void onBindViewHolder(@NonNull SI_RecyclerViewAdapter.MyViewHolder holder, int position) {
 
-        holder.imageView.setImageResource(suggestedItemsList.get(position).getProductImage());
-        holder.productName.setText(suggestedItemsList.get(position).getProductName());
-        holder.productPrice.setText(suggestedItemsList.get(position).getProductPrice());
+        holder.imageView.setImageResource(suggestedItemsList.get(position).getImageResId());
+        holder.productName.setText(suggestedItemsList.get(position).getProduct_name());
+        holder.productPrice.setText(suggestedItemsList.get(position).getPrice());
     }
 
     @Override

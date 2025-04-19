@@ -31,7 +31,7 @@
                 android:layout_height="wrap_content"
                 android:background="@color/white"
                 android:text="Description goes here"
-                android:minHeight="100dp"
+                android:minHeight="140dp"
                 android:padding="5dp" />
 
             <ImageView
@@ -107,14 +107,6 @@
                         android:padding="10dp"
                         android:text="Add To Cart" />
 
-                    <TextView
-                        android:id="@+id/detailsTextView"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@color/white"
-                        android:minHeight="200dp"
-                        android:padding="5dp"
-                        android:text="Additional details about the product here" />
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
