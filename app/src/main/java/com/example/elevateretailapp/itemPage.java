@@ -52,30 +52,57 @@ public class itemPage extends Fragment {
         this.price = price;
     }
 
+
+
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment itemPage.
      */
     // TODO: Rename and change types and number of parameters
-    public static itemPage newInstance(String param1, String param2) {
+//    public static itemPage newInstance(String param1, String param2) {
+//        itemPage fragment = new itemPage();
+//        Bundle args = new Bundle();
+//        args.putString(ARG_PARAM1, param1);
+//        args.putString(ARG_PARAM2, param2);
+//        fragment.setArguments(args);
+//        return fragment;
+//    }
+
+    public static itemPage newInstance(Product product) {
         itemPage fragment = new itemPage();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putInt("product_id", product.getProduct_id());
+        args.putString("product_name", product.getProduct_name());
+        args.putString("product_description", product.getProduct_description());
+        args.putInt("category_id", product.getCategory_id());
+        args.putInt("supplier_id", product.getSupplier_id());
+        args.putInt("imageResId", product.getImageResId());
+        args.putString("price", product.getPrice());
         fragment.setArguments(args);
         return fragment;
     }
+
+//    @Override
+//    public void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        if (getArguments() != null) {
+//            mParam1 = getArguments().getString(ARG_PARAM1);
+//            mParam2 = getArguments().getString(ARG_PARAM2);
+//        }
+//    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            product_id = getArguments().getInt("product_id");
+            product_name = getArguments().getString("product_name");
+            product_description = getArguments().getString("product_description");
+            category_id = getArguments().getInt("category_id");
+            supplier_id = getArguments().getInt("supplier_id");
+            imageResId = getArguments().getInt("imageResId");
+            price = getArguments().getString("price");
         }
     }
 
@@ -97,11 +124,31 @@ public class itemPage extends Fragment {
 
         // attach listener BTW this is lambda style, so you cant reuse any code you put here lmao
         buyNowButton.setOnClickListener(v -> {
+            Product product = new Product(
+                    product_id,
+                    product_name,
+                    product_description,
+                    category_id,
+                    supplier_id,
+                    imageResId,
+                    price
+            );
+            CartManager.addToCart(product);
             ((MainActivity) getActivity()).setCurrentFragment(new CheckoutFragment());
         });
 
         addToCartButton.setOnClickListener(v -> {
             // adds something to the cart array
+            Product product = new Product(
+                    product_id,
+                    product_name,
+                    product_description,
+                    category_id,
+                    supplier_id,
+                    imageResId,
+                    price
+            );
+            CartManager.addToCart(product);
             Toast.makeText(getContext(), "Added to cart", Toast.LENGTH_SHORT).show();
         });
 
@@ -114,7 +161,7 @@ public class itemPage extends Fragment {
         // update
         sellerTxtBox.setText("Seller: " + supplier_id);
         descriptionTxtBox.setText(product_description);
-        priceTagTxtBox.setText("$" + price);
+        priceTagTxtBox.setText(price);
 
 
         return myView;
