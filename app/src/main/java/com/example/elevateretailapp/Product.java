@@ -8,6 +8,7 @@ public class Product {
     private int supplier_id;
     private int imageResId; // drawable resource ID
     private String price; // price as a String like "$9.99"
+    private int quantity = 1; // default to 1
 
     public Product() {}
 
@@ -76,6 +77,14 @@ public class Product {
 
     public void setPrice(String price) {
         this.price = price;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity){
+        this.quantity = quantity;
     }
 
     @Override

@@ -3,11 +3,16 @@ package com.example.elevateretailapp;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
+
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -64,6 +69,11 @@ public class CartFragment extends Fragment {
 
         // ref the button
         Button checkoutButton = view.findViewById(R.id.btnCheckout);
+        RecyclerView cartRecycler = view.findViewById(R.id.cartRecyclerView);
+        TextView grandTotalTextView = view.findViewById(R.id.totalTextBox);
+        List<Product> cartItems = CartManager.getCartItems();
+
+        updateGrandTotal(grandTotalTextView);
 
         checkoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,11 +83,36 @@ public class CartFragment extends Fragment {
                 }
             }
         });
-        return view;
 
+
+
+        CartRecyclerViewAdapter adapter = new CartRecyclerViewAdapter(cartItems, getContext(), new OnCartChangedListener() {
+            @Override
+            public void onCartChanged() {
+                updateGrandTotal(grandTotalTextView);
+            }
+        });
+        cartRecycler.setAdapter(adapter);
+        cartRecycler.setLayoutManager(new LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL, false));
+
+        return view;
     }
 
     // functions
+
+    // calcs total then places it into the total after parsing to string
+    public static void updateGrandTotal(TextView grandTotalTextView) {
+        double total = 0.0;
+        for (Product p : CartManager.getCartItems()) {
+            try {
+                double price = Double.parseDouble(p.getPrice().replace("$", ""));
+                total += price * p.getQuantity();
+            } catch (NumberFormatException e) {
+                // idk what to put for e here
+            }
+        }
+        grandTotalTextView.setText(String.format("Total: $%.2f", total));
+    }
 
 
 }

@@ -124,7 +124,29 @@ public class ProfileFragment extends Fragment {
 
 
 
-        RW_RecyclerViewAdapter adapter1 = new RW_RecyclerViewAdapter(requireContext(), mockProfileItems1);
+        RW_RecyclerViewAdapter adapter1 = new RW_RecyclerViewAdapter(
+                requireContext(),
+                mockProfileItems1,
+                new OnProductClickListener() {
+                    @Override
+                    public void onProductClick(Product item) {
+                        if (getActivity() instanceof MainActivity) {
+                            ((MainActivity) getActivity()).setCurrentFragment(
+                                    new itemPage(
+                                            item.getProduct_id(),
+                                            item.getProduct_name(),
+                                            item.getProduct_description(),
+                                            item.getCategory_id(),
+                                            item.getSupplier_id(),
+                                            item.getImageResId(),
+                                            item.getPrice()
+                                    )
+                            );
+
+                        }
+                    }
+                }
+        );
         RW_recyclerview.setAdapter(adapter1);
         RW_recyclerview.setLayoutManager(new LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL, false));
 

@@ -19,6 +19,15 @@ public class Cart {
 
     // add to cart
     public void addToCart(Product product){
+        for (Product P : productList) {
+            if (P.getProduct_id() == product.getProduct_id()) {
+                // Found matching product to increase quantity
+                P.setQuantity(P.getQuantity() + 1);
+                return;
+            }
+        }
+
+        product.setQuantity(1);
         productList.add(product);
     }
 
