@@ -17,10 +17,12 @@ import java.util.ArrayList;
 class RW_RecyclerViewAdapter extends RecyclerView.Adapter<RW_RecyclerViewAdapter.MyViewHolder> {
 
     Context context;
-    ArrayList<ProfileProductItem> recentlyWishlistedList;
-    public RW_RecyclerViewAdapter(Context context, ArrayList<ProfileProductItem> recentlyWishlistedList) {
+    ArrayList<Product> recentlyWishlistedList;
+    private OnProductClickListener listener;
+    public RW_RecyclerViewAdapter(Context context, ArrayList<Product> recentlyWishlistedList, OnProductClickListener listener) {
         this.context = context;
         this.recentlyWishlistedList = recentlyWishlistedList;
+        this.listener = listener;
     }
 
     @NonNull
@@ -33,10 +35,16 @@ class RW_RecyclerViewAdapter extends RecyclerView.Adapter<RW_RecyclerViewAdapter
 
     @Override
     public void onBindViewHolder(@NonNull RW_RecyclerViewAdapter.MyViewHolder holder, int position) {
+        Product product = recentlyWishlistedList.get(position);
+        holder.imageView.setImageResource(recentlyWishlistedList.get(position).getImageResId());
+        holder.productName.setText(recentlyWishlistedList.get(position).getProduct_name());
+        holder.productPrice.setText(recentlyWishlistedList.get(position).getPrice());
 
-        holder.imageView.setImageResource(recentlyWishlistedList.get(position).getProductImage());
-        holder.productName.setText(recentlyWishlistedList.get(position).getProductName());
-        holder.productPrice.setText(recentlyWishlistedList.get(position).getProductPrice());
+        holder.itemView.setOnClickListener(v -> {
+            if (listener != null) {
+                listener.onProductClick(product);
+            }
+        });
     }
 
     @Override

@@ -3,12 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="409dp"
     android:layout_height="wrap_content"
+    android:backgroundTint="#D5A3F4"
+    android:layout_margin="5dp"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent" >
+    app:layout_constraintTop_toTopOf="parent"
+    app:cardCornerRadius="10dp">
 
-    <!--Item for wishlist recyclerview options-->
+    <!--Item for successful purchase recyclerview -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -19,18 +22,20 @@
             android:layout_width="85dp"
             android:layout_height="85dp"
             android:id="@+id/success_product_image"
-            android:background="@drawable/image_view_frame"/>
+            android:background="@drawable/blank_view_frame"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:padding="8dp">
 
             <TextView
                 android:id="@+id/success_item_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
                 android:textSize="20dp"
                 android:textStyle="bold"
                 android:text="Product Name" />
@@ -53,6 +58,27 @@
                     android:text="Jan. 1, 2025" />
 
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Qty: "/>
+
+                <TextView
+                    android:id="@+id/success_quantity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Quantity" />
+
+            </LinearLayout>
+
+
+
         </LinearLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

@@ -1,10 +1,8 @@
 package com.example.elevateretailapp;
 
-import android.app.Dialog;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -109,23 +107,46 @@ public class ProfileFragment extends Fragment {
         );
 
         //Mock data for recyclerviews in profile page
-        ArrayList<ProfileProductItem> mockProfileItems1 = new ArrayList<>();
-        mockProfileItems1.add(new ProfileProductItem(R.drawable.product_image, "Pencils", "$12.99"));
-        mockProfileItems1.add(new ProfileProductItem(R.drawable.product_image, "One Piece Statue", "$59.99"));
-        mockProfileItems1.add(new ProfileProductItem(R.drawable.product_image, "Notebook", "$5.99"));
-        mockProfileItems1.add(new ProfileProductItem(R.drawable.product_image, "Lamp", "$55.99"));
-        mockProfileItems1.add(new ProfileProductItem(R.drawable.product_image, "Shoes", "$79.99"));
+        ArrayList<Product> mockProfileItems1 = new ArrayList<>();
+        mockProfileItems1.add(new Product(1, "Pencils", "Box of 12 graphite pencils", 101, 201, R.drawable.product_image, "$12.99"));
+        mockProfileItems1.add(new Product(2, "One Piece Statue", "Detailed anime figure", 102, 202, R.drawable.product_image, "$59.99"));
+        mockProfileItems1.add(new Product(3, "Notebook", "100 pages spiral notebook", 103, 203, R.drawable.product_image, "$5.99"));
+        mockProfileItems1.add(new Product(4, "Lamp", "Desk lamp with LED bulb", 104, 204, R.drawable.product_image, "$55.99"));
+        mockProfileItems1.add(new Product(5, "The One and Only, Bucky Barnes", "The best marvel character", 105, 205, R.drawable.product_image, "$2999.99"));
 
-        ArrayList<ProfileProductItem> mockProfileItems2 = new ArrayList<>();
-        mockProfileItems2.add(new ProfileProductItem(R.drawable.product_image, "Headphones", "$99.99"));
-        mockProfileItems2.add(new ProfileProductItem(R.drawable.product_image, "Notepad", "$3.99"));
-        mockProfileItems2.add(new ProfileProductItem(R.drawable.product_image, "Xbox Controller", "$109.99"));
-        mockProfileItems2.add(new ProfileProductItem(R.drawable.product_image, "Drawing Tablet", "$159.99"));
-        mockProfileItems2.add(new ProfileProductItem(R.drawable.product_image, "Pens", "$7.99"));
+        ArrayList<Product> mockProfileItems2 = new ArrayList<>();
+        mockProfileItems2.add(new Product(6, "Headphones", "Wireless over-ear headphones", 106, 206, R.drawable.product_image, "$99.99"));
+        mockProfileItems2.add(new Product(7, "Notepad", "Sticky notepad", 107, 207, R.drawable.product_image, "$3.99"));
+        mockProfileItems2.add(new Product(8, "Xbox Controller", "Wireless gaming controller", 108, 208, R.drawable.product_image, "$109.99"));
+        mockProfileItems2.add(new Product(9, "Drawing Tablet", "Digital drawing tablet with pen", 109, 209, R.drawable.product_image, "$159.99"));
+        mockProfileItems2.add(new Product(10, "Pens", "Pack of 5 gel pens", 110, 210, R.drawable.product_image, "$7.99"));
 
 
 
-        RW_RecyclerViewAdapter adapter1 = new RW_RecyclerViewAdapter(requireContext(), mockProfileItems1);
+
+        RW_RecyclerViewAdapter adapter1 = new RW_RecyclerViewAdapter(
+                requireContext(),
+                mockProfileItems1,
+                new OnProductClickListener() {
+                    @Override
+                    public void onProductClick(Product item) {
+                        if (getActivity() instanceof MainActivity) {
+                            ((MainActivity) getActivity()).setCurrentFragment(
+                                    new itemPage(
+                                            item.getProduct_id(),
+                                            item.getProduct_name(),
+                                            item.getProduct_description(),
+                                            item.getCategory_id(),
+                                            item.getSupplier_id(),
+                                            item.getImageResId(),
+                                            item.getPrice()
+                                    )
+                            );
+
+                        }
+                    }
+                }
+        );
         RW_recyclerview.setAdapter(adapter1);
         RW_recyclerview.setLayoutManager(new LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL, false));
 

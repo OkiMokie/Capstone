@@ -3,11 +3,16 @@ package com.example.elevateretailapp;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
+
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -62,14 +67,39 @@ public class CheckoutFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_checkout, container, false);
 
+        RecyclerView checkoutRecycler = view.findViewById(R.id.itemsRecyclerView);
+        TextView grandTotalTextView = view.findViewById(R.id.checkout_total_amount);
+
+        double grandTotal = 0.0;
+
+        List<Product> cartItems = CartManager.getCartItems();
+
+        // the adapter to be used for checkoutRecycler recyclerview
+        checkoutRecyclerViewAdapter adapter = new checkoutRecyclerViewAdapter(cartItems, requireContext());
+        checkoutRecycler.setAdapter(adapter);
+        checkoutRecycler.setLayoutManager(new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));
+
         // ref the button
         Button placeOrderBtn = view.findViewById(R.id.placeYourOrderBtn);
+
+        // calculates and gives the grand total of things in cart, displays in a text view
+        for (Product product : cartItems) {
+            try {
+                double unitPrice = Double.parseDouble(product.getPrice().replace("$", ""));
+                grandTotal += unitPrice * product.getQuantity();
+            } catch (NumberFormatException e) {
+                // Optional Log I don't know what to put lol - FF
+            }
+        }
+
+        grandTotalTextView.setText(String.format("Total: $%.2f", grandTotal));
 
         // button listener
         placeOrderBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ((MainActivity) getActivity()).setCurrentFragment(new purchaseSuccessfulFragment());
+
             }
         });
         return view;
