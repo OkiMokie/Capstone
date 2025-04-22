@@ -52,17 +52,30 @@
                     android:textColor="#fffca3" />
             </androidx.cardview.widget.CardView>
 
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/itemsRecyclerView"
+            <TextView
+                android:id="@+id/itemTextBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:background="#ffffff"
+                android:layout_marginTop="8dp"
+                android:text="Items:"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/cartRecyclerView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btnBackgroundCard" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/cartRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="45dp"
                 android:background="#ffffff"
                 android:minHeight="300dp"
                 android:nestedScrollingEnabled="false"
                 android:textColor="@android:color/black"
-                app:layout_constraintTop_toBottomOf="@+id/btnBackgroundCard"
+                app:layout_constraintTop_toBottomOf="@+id/itemTextBox"
                 tools:layout_editor_absoluteX="16dp"
                 app:layout_constraintVertical_bias="0"/>
 
@@ -73,7 +86,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
                 android:background="#ffffff"
-                android:padding="8dp"
+                android:paddingTop="8dp"
                 android:text="More Information on returns"
                 android:textColor="@android:color/black"
                 android:textSize="14sp"
@@ -81,7 +94,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/itemsRecyclerView"
+                app:layout_constraintTop_toBottomOf="@+id/cartRecyclerView"
                 app:layout_constraintVertical_bias="0" />
 
             <TextView

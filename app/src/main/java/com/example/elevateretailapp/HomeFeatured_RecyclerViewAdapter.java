@@ -1,0 +1,65 @@
+package com.example.elevateretailapp;
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
+
+public class HomeFeatured_RecyclerViewAdapter extends RecyclerView.Adapter<HomeFeatured_RecyclerViewAdapter.MyViewHolder> {
+
+    private Context context;
+    private ArrayList<Product> homeFeaturedItemList;
+    private OnProductClickListener listener;
+
+    public HomeFeatured_RecyclerViewAdapter(ArrayList<Product> homeProductItemList, Context context, OnProductClickListener listener) {
+        this.homeFeaturedItemList = homeProductItemList;
+        this.context = context;
+        this.listener = listener;
+    }
+
+    @NonNull
+    @Override
+    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        LayoutInflater inflater = LayoutInflater.from(context);
+        View view = inflater.inflate(R.layout.item_profile_product, parent, false);
+        return new MyViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+        Product item = homeFeaturedItemList.get(position);
+        holder.productName.setText(item.getProduct_name());
+        holder.productPrice.setText(item.getPrice());
+        holder.productImage.setImageResource(item.getImageResId());
+
+        holder.itemView.setOnClickListener(v -> {
+            if (listener != null) {
+                listener.onProductClick(item);
+            }
+        });
+    }
+
+    @Override
+    public int getItemCount() {
+        return homeFeaturedItemList.size();
+    }
+
+    public static class MyViewHolder extends RecyclerView.ViewHolder {
+        TextView productName, productPrice;
+        ImageView productImage;
+
+        public MyViewHolder(@NonNull View itemView) {
+            super(itemView);
+            productName = itemView.findViewById(R.id.product_name);
+            productPrice = itemView.findViewById(R.id.product_price);
+            productImage = itemView.findViewById(R.id.product_image);
+        }
+    }
+}
