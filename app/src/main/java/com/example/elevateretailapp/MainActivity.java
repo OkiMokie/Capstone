@@ -97,8 +97,9 @@ public class MainActivity extends AppCompatActivity {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                // Handle search submission
-                return false;
+                // Navigate to the search fragment
+                setCurrentFragment(new SearchFragment(query));
+                return true;
             }
 
             @Override

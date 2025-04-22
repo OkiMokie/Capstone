@@ -119,6 +119,7 @@ public class itemPage extends Fragment {
         TextView descriptionTxtBox = myView.findViewById(R.id.ItemDescriptionTextView);
         ImageView productImageBox = myView.findViewById(R.id.ProductImageView);
         TextView priceTagTxtBox = myView.findViewById(R.id.ProductPriceTagTextView);
+        TextView nameTagTxtBox = myView.findViewById(R.id.NameTextView);
         Button buyNowButton = myView.findViewById(R.id.BuyNowButton);
         Button addToCartButton = myView.findViewById(R.id.AddToCartBtn);
 
@@ -162,6 +163,7 @@ public class itemPage extends Fragment {
         sellerTxtBox.setText("Seller: " + supplier_id);
         descriptionTxtBox.setText(product_description);
         priceTagTxtBox.setText(price);
+        nameTagTxtBox.setText(product_name);
 
 
         return myView;
