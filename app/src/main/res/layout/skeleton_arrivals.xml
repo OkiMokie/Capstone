@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/arrivals_shimmer"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:orientation="horizontal"
+    android:padding="6dp"
+    android:background="#eeeeee">
+
+    <!-- Placeholder cards -->
+    <View
+        android:layout_width="100dp"
+        android:layout_height="match_parent"
+        android:layout_marginEnd="6dp"
+        android:background="#CCCCCC" />
+    <View
+        android:layout_width="100dp"
+        android:layout_height="match_parent"
+        android:layout_marginEnd="6dp"
+        android:background="#CCCCCC" />
+    <View
+        android:layout_width="100dp"
+        android:layout_height="match_parent"
+        android:background="#CCCCCC" />
+</LinearLayout>

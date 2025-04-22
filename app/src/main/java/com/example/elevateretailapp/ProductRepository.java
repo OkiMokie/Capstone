@@ -18,6 +18,7 @@ public class ProductRepository {
         void onError(String errorMessage);
     }
 
+
     public static void getProducts(Context context, ProductCallback callback) {
         String url = APICon.Product_URL;
 
@@ -50,4 +51,6 @@ public class ProductRepository {
 
         VolleySingleton.getInstance(context).addToRequestQueue(request);
     }
+
+
 }
