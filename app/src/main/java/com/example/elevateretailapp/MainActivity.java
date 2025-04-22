@@ -1,23 +1,26 @@
 package com.example.elevateretailapp;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
+
 import com.example.elevateretailapp.databinding.ActivityMainBinding;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.core.graphics.Insets;
-import androidx.fragment.app.Fragment;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import com.example.elevateretailapp.R;
+import androidx.fragment.app.Fragment;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import androidx.appcompat.widget.Toolbar;
-
 import androidx.appcompat.widget.SearchView;
 
 public class MainActivity extends AppCompatActivity {
@@ -27,25 +30,39 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Request notification permission for Android 13+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS)
+                    != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.POST_NOTIFICATIONS}, 1001);
+            }
+        }
+
+        // Setup ViewBinding and layout
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main);
+        setContentView(binding.getRoot());
 
+        // Setup notification channel once
+        NotificationsHandler.createNotificationChannel(this);
+
+        // Toolbar
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        // Bottom navigation
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
-        // the fragments
+        // Fragments
         Fragment homeFrag = new HomeFragment();
         Fragment profileFrag = new ProfileFragment();
         Fragment settingsFrag = new SettingsFragment();
         Fragment cartFrag = new CartFragment();
 
-        // Set the default fragment
+        // Default fragment
         setCurrentFragment(homeFrag);
 
-        // Set listener for bottom navigation items
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
             Fragment selectedFragment = null;
 
@@ -63,13 +80,14 @@ public class MainActivity extends AppCompatActivity {
                     selectedFragment = cartFrag;
                     break;
             }
+
             if (selectedFragment != null) {
                 setCurrentFragment(selectedFragment);
             }
             return true;
         });
 
-        // Adjust for edge-to-edge experience
+        // Edge-to-edge insets
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.ConstraintLayout), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -77,12 +95,11 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    // Method to set the current fragment
     void setCurrentFragment(Fragment fragment) {
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.FragmentContainer, fragment)
-                .addToBackStack(null) // This ensures we can go back to the previous fragment
+                .addToBackStack(null)
                 .commit();
     }
 
@@ -97,13 +114,13 @@ public class MainActivity extends AppCompatActivity {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                // Handle search submission
+                // Handle submission
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                // Handle text changes
+                // Handle live typing
                 return false;
             }
         });
