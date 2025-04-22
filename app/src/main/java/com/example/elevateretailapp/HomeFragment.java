@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.facebook.shimmer.ShimmerFrameLayout;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -25,6 +26,8 @@ public class HomeFragment extends Fragment {
 
     private RecyclerView arrivalsRecycler;
     private RecyclerView featuredRecycler;
+    private ShimmerFrameLayout shimmerContainer;
+
 
     public HomeFragment() {
         // Required empty public constructor
@@ -67,7 +70,7 @@ public class HomeFragment extends Fragment {
                         String description = obj.getString("description");
                         int category_id = obj.getInt("category_id");
                         int supplier_id = obj.getInt("supplier_id");
-                        String price = obj.getString("price");
+                        String price = obj.getString("unit_price");
 
                         newArrivalsList.add(new Product(product_id, name, description, category_id, supplier_id, R.drawable.product_image, price));
                     }
@@ -124,7 +127,7 @@ public class HomeFragment extends Fragment {
                         String description = obj.getString("description");
                         int category_id = obj.getInt("category_id");
                         int supplier_id = obj.getInt("supplier_id");
-                        String price = obj.getString("price");
+                        String price = obj.getString("unit_price");
 
                         featuredList.add(new Product(product_id, name, description, category_id, supplier_id, R.drawable.product_image, price));
                     }
