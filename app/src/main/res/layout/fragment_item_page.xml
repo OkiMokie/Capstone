@@ -18,12 +18,22 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/NameTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Name"
+                android:background="@color/white"
+                android:padding="5dp"
+                android:textStyle="bold"/>
+
+            <TextView
                 android:id="@+id/SellerTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
                 android:text="Seller"
-                android:padding="5dp" />
+                android:textStyle="bold"
+                android:padding="5dp"/>
 
             <TextView
                 android:id="@+id/ItemDescriptionTextView"
