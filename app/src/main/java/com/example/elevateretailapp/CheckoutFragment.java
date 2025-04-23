@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -72,7 +73,7 @@ public class CheckoutFragment extends Fragment {
         TextView grandTotalTextView = view.findViewById(R.id.checkout_total_amount);
         EditText voucher = view.findViewById(R.id.voucher_edit_text);
 
-        double grandTotal = 0.0;
+        double tempTotal = 0.0;
 
         List<Product> cartItems = CartManager.getCartItems();
 
@@ -84,7 +85,17 @@ public class CheckoutFragment extends Fragment {
         // ref the button
         Button placeOrderBtn = view.findViewById(R.id.placeYourOrderBtn);
 
-        calcGrandTotal()
+        // calculates and gives the grand total of things in cart, displays in a text view
+        for (Product product : cartItems) {
+            try {
+                double unitPrice = Double.parseDouble(product.getPrice().replace("$", ""));
+                tempTotal += unitPrice * product.getQuantity() + (unitPrice * product.getQuantity() * .07);
+            } catch (NumberFormatException e) {
+                e.printStackTrace();
+            }
+        }
+
+        final double grandTotal = tempTotal; // ✅ now it's final and usable in the listener
 
         grandTotalTextView.setText(String.format("Total w/ Tax: $%.2f", grandTotal));
 
@@ -92,33 +103,28 @@ public class CheckoutFragment extends Fragment {
         placeOrderBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((MainActivity) getActivity()).setCurrentFragment(new purchaseSuccessfulFragment());
+                double tempTotal = 0.0;
 
+                for (Product product : cartItems) {
+                    try {
+                        double unitPrice = Double.parseDouble(product.getPrice().replace("$", ""));
+                        tempTotal += unitPrice * product.getQuantity() + (unitPrice * product.getQuantity() * 0.07);
+                    } catch (NumberFormatException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                String voucherCode = voucher.getText().toString().trim();
+                if (voucherCode.equalsIgnoreCase("Bucky")) {
+                    tempTotal -= (tempTotal * 0.25);
+                }
+
+                purchaseSuccessfulFragment fragment = purchaseSuccessfulFragment.newInstance(tempTotal);
+                ((MainActivity) getActivity()).setCurrentFragment(fragment);
             }
         });
         return view;
     }
 
-    public double calcGrandTotal(double unitPrice, List<Product> cartItems, EditText voucher) {
-
-        double grandTotal;
-
-        // calculates and gives the grand total of things in cart, displays in a text view
-        for (Product product : cartItems) {
-            try {
-                double unitPrice = Double.parseDouble(product.getPrice().replace("$", ""));
-                grandTotal += unitPrice * product.getQuantity() + (unitPrice * product.getQuantity() * .07);
-
-                if (voucher != null) {
-                    grandTotal -= (grandTotal * .25);
-                }
-
-            } catch (NumberFormatException e) {
-                // Optional Log I don't know what to put lol - FF
-            }
-        }
-
-        return grandTotal;
-    }
 
 }
