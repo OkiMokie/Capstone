@@ -95,7 +95,7 @@ public class CheckoutFragment extends Fragment {
             }
         }
 
-        final double grandTotal = tempTotal; // ✅ now it's final and usable in the listener
+        final double grandTotal = tempTotal;
 
         grandTotalTextView.setText(String.format("Total w/ Tax: $%.2f", grandTotal));
 
@@ -118,6 +118,8 @@ public class CheckoutFragment extends Fragment {
                 if (voucherCode.equalsIgnoreCase("Bucky")) {
                     tempTotal -= (tempTotal * 0.25);
                 }
+
+                grandTotalTextView.setText(String.format("Total w/ Tax: $%.2f", tempTotal));
 
                 purchaseSuccessfulFragment fragment = purchaseSuccessfulFragment.newInstance(tempTotal);
                 ((MainActivity) getActivity()).setCurrentFragment(fragment);
