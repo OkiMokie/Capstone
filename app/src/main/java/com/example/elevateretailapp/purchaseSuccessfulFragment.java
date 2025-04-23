@@ -79,7 +79,7 @@ public class purchaseSuccessfulFragment extends Fragment {
         for (Product product : cartItems) {
             try {
                 double unitPrice = Double.parseDouble(product.getPrice().replace("$", ""));
-                grandTotal += unitPrice * product.getQuantity();
+                grandTotal += unitPrice * product.getQuantity() + (unitPrice * product.getQuantity() * .07);
             } catch (NumberFormatException e) {
                 // Optional Log I don't know what to put lol - FF
             }

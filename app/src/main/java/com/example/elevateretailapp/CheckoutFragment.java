@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.List;
@@ -69,6 +70,7 @@ public class CheckoutFragment extends Fragment {
 
         RecyclerView checkoutRecycler = view.findViewById(R.id.itemsRecyclerView);
         TextView grandTotalTextView = view.findViewById(R.id.checkout_total_amount);
+        EditText voucher = view.findViewById(R.id.voucher_edit_text);
 
         double grandTotal = 0.0;
 
@@ -82,17 +84,9 @@ public class CheckoutFragment extends Fragment {
         // ref the button
         Button placeOrderBtn = view.findViewById(R.id.placeYourOrderBtn);
 
-        // calculates and gives the grand total of things in cart, displays in a text view
-        for (Product product : cartItems) {
-            try {
-                double unitPrice = Double.parseDouble(product.getPrice().replace("$", ""));
-                grandTotal += unitPrice * product.getQuantity();
-            } catch (NumberFormatException e) {
-                // Optional Log I don't know what to put lol - FF
-            }
-        }
+        calcGrandTotal()
 
-        grandTotalTextView.setText(String.format("Total: $%.2f", grandTotal));
+        grandTotalTextView.setText(String.format("Total w/ Tax: $%.2f", grandTotal));
 
         // button listener
         placeOrderBtn.setOnClickListener(new View.OnClickListener() {
@@ -104,4 +98,27 @@ public class CheckoutFragment extends Fragment {
         });
         return view;
     }
+
+    public double calcGrandTotal(double unitPrice, List<Product> cartItems, EditText voucher) {
+
+        double grandTotal;
+
+        // calculates and gives the grand total of things in cart, displays in a text view
+        for (Product product : cartItems) {
+            try {
+                double unitPrice = Double.parseDouble(product.getPrice().replace("$", ""));
+                grandTotal += unitPrice * product.getQuantity() + (unitPrice * product.getQuantity() * .07);
+
+                if (voucher != null) {
+                    grandTotal -= (grandTotal * .25);
+                }
+
+            } catch (NumberFormatException e) {
+                // Optional Log I don't know what to put lol - FF
+            }
+        }
+
+        return grandTotal;
+    }
+
 }
