@@ -41,7 +41,7 @@
                 android:layout_height="wrap_content"
                 android:background="@color/white"
                 android:text="Description goes here"
-                android:minHeight="140dp"
+                android:minHeight="100dp"
                 android:padding="5dp" />
 
             <ImageView

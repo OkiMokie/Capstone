@@ -74,6 +74,35 @@
                 app:layout_constraintTop_toBottomOf="@id/totalCheckoutTextBox"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
+
+            <TextView
+                android:id="@+id/voucher_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:padding="8dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:text="Have a discount? Enter a voucher below!"
+                app:drawableEndCompat="@drawable/baseline_arrow_downward_24"
+                app:drawableStartCompat="@drawable/baseline_arrow_downward_24"
+                app:layout_constraintTop_toBottomOf="@+id/itemsRecyclerView"/>
+
+            <EditText
+                android:id="@+id/voucher_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:padding="8dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:hint="Enter your voucher here..."
+                app:layout_constraintTop_toBottomOf="@+id/voucher_label"/>
+
+
             
             <androidx.cardview.widget.CardView
                 android:id="@+id/totals_cardview"
@@ -81,7 +110,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:backgroundTint="#FFFFFF"
-                app:layout_constraintTop_toBottomOf="@+id/itemsRecyclerView"
+                app:layout_constraintTop_toBottomOf="@+id/voucher_edit_text"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toTopOf="@+id/deliveringToText">
@@ -91,7 +120,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
-                    android:text="Total"
+                    android:textColor="@color/black"
+                    android:text="Total w/ Tax: "
                     android:textStyle="bold"/>
 
 
