@@ -33,6 +33,8 @@ public class purchaseSuccessfulFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    private static final String ARG_TOTAL = "grand_total";
+
     public purchaseSuccessfulFragment() {
         // Required empty public constructor
     }
@@ -55,6 +57,14 @@ public class purchaseSuccessfulFragment extends Fragment {
         return fragment;
     }
 
+    public static purchaseSuccessfulFragment newInstance(double total) {
+        purchaseSuccessfulFragment fragment = new purchaseSuccessfulFragment();
+        Bundle args = new Bundle();
+        args.putDouble(ARG_TOTAL, total);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,20 +82,12 @@ public class purchaseSuccessfulFragment extends Fragment {
         RecyclerView successfulRecyclerView = view.findViewById(R.id.purchased_item_recycler);
         TextView totalTodayTxt = view.findViewById(R.id.total_today);
 
-        double grandTotal = 0.0;
-
         List<Product> cartItems = CartManager.getCartItems();
 
-        for (Product product : cartItems) {
-            try {
-                double unitPrice = Double.parseDouble(product.getPrice().replace("$", ""));
-                grandTotal += unitPrice * product.getQuantity();
-            } catch (NumberFormatException e) {
-                // Optional Log I don't know what to put lol - FF
-            }
+        if (getArguments() != null) {
+            double total = getArguments().getDouble(ARG_TOTAL, 0.0);
+            totalTodayTxt.setText(String.format("You paid: $%.2f", total));
         }
-
-        totalTodayTxt.setText(String.format("$%.2f", grandTotal));
 
         PurchaseSuccessful_RecyclerViewAdapter adapter = new PurchaseSuccessful_RecyclerViewAdapter(requireContext(), cartItems);
         successfulRecyclerView.setAdapter(adapter);

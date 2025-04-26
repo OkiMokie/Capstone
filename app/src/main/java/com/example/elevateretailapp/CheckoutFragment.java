@@ -10,7 +10,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -69,8 +71,9 @@ public class CheckoutFragment extends Fragment {
 
         RecyclerView checkoutRecycler = view.findViewById(R.id.itemsRecyclerView);
         TextView grandTotalTextView = view.findViewById(R.id.checkout_total_amount);
+        EditText voucher = view.findViewById(R.id.voucher_edit_text);
 
-        double grandTotal = 0.0;
+        double tempTotal = 0.0;
 
         List<Product> cartItems = CartManager.getCartItems();
 
@@ -86,22 +89,44 @@ public class CheckoutFragment extends Fragment {
         for (Product product : cartItems) {
             try {
                 double unitPrice = Double.parseDouble(product.getPrice().replace("$", ""));
-                grandTotal += unitPrice * product.getQuantity();
+                tempTotal += unitPrice * product.getQuantity() + (unitPrice * product.getQuantity() * .07);
             } catch (NumberFormatException e) {
-                // Optional Log I don't know what to put lol - FF
+                e.printStackTrace();
             }
         }
 
-        grandTotalTextView.setText(String.format("Total: $%.2f", grandTotal));
+        final double grandTotal = tempTotal;
+
+        grandTotalTextView.setText(String.format("Total w/ Tax: $%.2f", grandTotal));
 
         // button listener
         placeOrderBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((MainActivity) getActivity()).setCurrentFragment(new purchaseSuccessfulFragment());
+                double tempTotal = 0.0;
 
+                for (Product product : cartItems) {
+                    try {
+                        double unitPrice = Double.parseDouble(product.getPrice().replace("$", ""));
+                        tempTotal += unitPrice * product.getQuantity() + (unitPrice * product.getQuantity() * 0.07);
+                    } catch (NumberFormatException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                String voucherCode = voucher.getText().toString().trim();
+                if (voucherCode.equalsIgnoreCase("Bucky")) {
+                    tempTotal -= (tempTotal * 0.25);
+                }
+
+                grandTotalTextView.setText(String.format("Total w/ Tax: $%.2f", tempTotal));
+
+                purchaseSuccessfulFragment fragment = purchaseSuccessfulFragment.newInstance(tempTotal);
+                ((MainActivity) getActivity()).setCurrentFragment(fragment);
             }
         });
         return view;
     }
+
+
 }
