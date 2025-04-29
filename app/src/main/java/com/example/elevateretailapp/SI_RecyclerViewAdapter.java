@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 
 //The adapter used for the suggested items recyclerview in the profile page
@@ -17,9 +19,11 @@ class SI_RecyclerViewAdapter extends RecyclerView.Adapter<SI_RecyclerViewAdapter
 
     Context context;
     ArrayList<Product> suggestedItemsList;
-    public SI_RecyclerViewAdapter(Context context, ArrayList<Product> suggestedItemsList) {
+    private OnProductClickListener listener;
+    public SI_RecyclerViewAdapter(Context context, ArrayList<Product> suggestedItemsList, OnProductClickListener listener) {
         this.context = context;
         this.suggestedItemsList = suggestedItemsList;
+        this.listener = listener;
     }
 
     @NonNull
@@ -32,10 +36,29 @@ class SI_RecyclerViewAdapter extends RecyclerView.Adapter<SI_RecyclerViewAdapter
 
     @Override
     public void onBindViewHolder(@NonNull SI_RecyclerViewAdapter.MyViewHolder holder, int position) {
+        Product product = suggestedItemsList.get(position);
 
-        holder.imageView.setImageResource(suggestedItemsList.get(position).getImageResId());
-        holder.productName.setText(suggestedItemsList.get(position).getProduct_name());
-        holder.productPrice.setText(suggestedItemsList.get(position).getPrice());
+        holder.productName.setText(product.getProduct_name());
+        holder.productPrice.setText(product.getPrice());
+
+        // Use Glide for image loading
+        if (product.getImageUrl() != null && !product.getImageUrl().isEmpty()) {
+            Glide.with(holder.imageView.getContext())
+                    .load(product.getImageUrl())
+                    .override(500, 500)
+                    .into(holder.imageView);
+        } else {
+            Glide.with(holder.imageView.getContext())
+                    .load(product.getImageResId())
+                    .override(500, 500)
+                    .into(holder.imageView);
+        }
+
+        holder.itemView.setOnClickListener(v -> {
+            if (listener != null) {
+                listener.onProductClick(product);
+            }
+        });
     }
 
     @Override

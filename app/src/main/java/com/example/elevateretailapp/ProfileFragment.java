@@ -70,18 +70,18 @@ public class ProfileFragment extends Fragment {
                         .replace(R.id.FragmentContainer, new PaymentMethodsFragment()).commit());
 
         ArrayList<Product> mockProfileItems1 = new ArrayList<>();
-        mockProfileItems1.add(new Product(1, "Pencils", "Box of 12 graphite pencils", 101, 201, R.drawable.product_image, "$12.99", null));
-        mockProfileItems1.add(new Product(2, "One Piece Statue", "Detailed anime figure", 102, 202, R.drawable.product_image, "$59.99", null));
-        mockProfileItems1.add(new Product(3, "Notebook", "100 pages spiral notebook", 103, 203, R.drawable.product_image, "$5.99", null));
-        mockProfileItems1.add(new Product(4, "Lamp", "Desk lamp with LED bulb", 104, 204, R.drawable.product_image, "$55.99", null));
-        mockProfileItems1.add(new Product(5, "The One and Only, Bucky Barnes", "The best marvel character", 105, 205, R.drawable.product_image, "$2999.99", null));
+        mockProfileItems1.add(new Product(1, "Pencils", "Box of 12 graphite pencils", 101, 201, R.drawable.pencils, "$12.99", null));
+        mockProfileItems1.add(new Product(2, "One Piece Statue", "Detailed anime figure", 102, 202, R.drawable.onepiecestatue, "$59.99", null));
+        mockProfileItems1.add(new Product(3, "Notebook", "100 pages spiral notebook", 103, 203, R.drawable.notebook, "$5.99", null));
+        mockProfileItems1.add(new Product(4, "Lamp", "Desk lamp with LED bulb", 104, 204, R.drawable.lamp, "$55.99", null));
+        mockProfileItems1.add(new Product(5, "The One and Only, Bucky Barnes", "The best marvel character", 105, 205, R.drawable.wintersoldierprestige, "$2999.99", null));
 
         ArrayList<Product> mockProfileItems2 = new ArrayList<>();
-        mockProfileItems2.add(new Product(6, "Headphones", "Wireless over-ear headphones", 106, 206, R.drawable.product_image, "$99.99", null));
-        mockProfileItems2.add(new Product(7, "Notepad", "Sticky notepad", 107, 207, R.drawable.product_image, "$3.99", null));
-        mockProfileItems2.add(new Product(8, "Xbox Controller", "Wireless gaming controller", 108, 208, R.drawable.product_image, "$109.99", null));
-        mockProfileItems2.add(new Product(9, "Drawing Tablet", "Digital drawing tablet with pen", 109, 209, R.drawable.product_image, "$159.99", null));
-        mockProfileItems2.add(new Product(10, "Pens", "Pack of 5 gel pens", 110, 210, R.drawable.product_image, "$7.99", null));
+        mockProfileItems2.add(new Product(6, "Headphones", "Wireless over-ear headphones", 106, 206, R.drawable.wirelessheadphones, "$99.99", null));
+        mockProfileItems2.add(new Product(7, "Notepad", "Sticky notepad", 107, 207, R.drawable.stickynotepad, "$3.99", null));
+        mockProfileItems2.add(new Product(8, "Xbox Controller", "Wireless gaming controller", 108, 208, R.drawable.xboxcontroller1, "$109.99", null));
+        mockProfileItems2.add(new Product(9, "Drawing Tablet", "Digital drawing tablet with pen", 109, 209, R.drawable.drawingtablet, "$159.99", null));
+        mockProfileItems2.add(new Product(10, "Pens", "Pack of 5 gel pens", 110, 210, R.drawable.pens, "$7.99", null));
 
         RW_RecyclerViewAdapter adapter1 = new RW_RecyclerViewAdapter(
                 requireContext(),
@@ -101,7 +101,20 @@ public class ProfileFragment extends Fragment {
         RW_recyclerview.setAdapter(adapter1);
         RW_recyclerview.setLayoutManager(new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));
 
-        SI_RecyclerViewAdapter adapter2 = new SI_RecyclerViewAdapter(requireContext(), mockProfileItems2);
+        SI_RecyclerViewAdapter adapter2 = new SI_RecyclerViewAdapter(
+                requireContext(),
+                mockProfileItems2,
+                item -> {
+                    if (getActivity() instanceof MainActivity) {
+                        ((MainActivity) getActivity()).setCurrentFragment(
+                                new itemPage(item.getProduct_id(), item.getProduct_name(),
+                                        item.getProduct_description(), item.getCategory_id(),
+                                        item.getSupplier_id(), item.getImageResId(),
+                                        item.getPrice(), item.getImageUrl())
+                        );
+                    }
+                }
+        );
         SI_recyclerview.setAdapter(adapter2);
         SI_recyclerview.setLayoutManager(new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));
 

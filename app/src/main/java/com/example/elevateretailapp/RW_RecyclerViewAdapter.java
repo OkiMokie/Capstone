@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
+import com.bumptech.glide.Glide;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -36,9 +36,22 @@ class RW_RecyclerViewAdapter extends RecyclerView.Adapter<RW_RecyclerViewAdapter
     @Override
     public void onBindViewHolder(@NonNull RW_RecyclerViewAdapter.MyViewHolder holder, int position) {
         Product product = recentlyWishlistedList.get(position);
-        holder.imageView.setImageResource(recentlyWishlistedList.get(position).getImageResId());
-        holder.productName.setText(recentlyWishlistedList.get(position).getProduct_name());
-        holder.productPrice.setText(recentlyWishlistedList.get(position).getPrice());
+
+        holder.productName.setText(product.getProduct_name());
+        holder.productPrice.setText(product.getPrice());
+
+        // Use Glide to load image (remote or local)
+        if (product.getImageUrl() != null && !product.getImageUrl().isEmpty()) {
+            Glide.with(holder.imageView.getContext())
+                    .load(product.getImageUrl()) // Load from URL
+                    .override(500, 500)          // Optional size
+                    .into(holder.imageView);
+        } else {
+            Glide.with(holder.imageView.getContext())
+                    .load(product.getImageResId()) // Load from local drawable
+                    .override(500, 500)
+                    .into(holder.imageView);
+        }
 
         holder.itemView.setOnClickListener(v -> {
             if (listener != null) {
