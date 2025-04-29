@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 
 //Adapter class to attach OrderTransactionItem to array using item layout
@@ -33,11 +35,15 @@ public class OT_RecyclerViewAdapter extends RecyclerView.Adapter<OT_RecyclerView
 
     @Override
     public void onBindViewHolder(@NonNull OT_RecyclerViewAdapter.MyViewHolder holder, int position) {
+        OrderedTransactionItem item = tempList.get(position);
 
         holder.tvOrder.setText(tempList.get(position).getOrderedItem());
         holder.tvDate.setText(tempList.get(position).getOrderedItemDate());
         holder.tvStatus.setText(tempList.get(position).getOrderedItemStatus());
-        holder.imageView.setImageResource(tempList.get(position).getOrderedImage());
+
+        Glide.with(holder.imageView.getContext())
+                .load(item.getOrderedImage())
+                .into(holder.imageView);
 
     }
 

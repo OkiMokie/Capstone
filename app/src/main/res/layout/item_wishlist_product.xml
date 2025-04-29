@@ -19,7 +19,7 @@
             android:layout_width="85dp"
             android:layout_height="85dp"
             android:id="@+id/wishlist_product_image"
-            android:background="@drawable/image_view_frame"/>
+            android:background="@drawable/blank_view_frame"/>
 
         <LinearLayout
             android:layout_width="match_parent"

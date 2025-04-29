@@ -33,7 +33,7 @@ public class PaymentMethodsFragment extends Fragment {
         });
 
         ArrayList<PaymentMethodItem> mockMethodList = new ArrayList<>();
-        mockMethodList.add(new PaymentMethodItem("1234", R.drawable.card_logo));
+        mockMethodList.add(new PaymentMethodItem("1234", R.drawable.visalogo));
 
         PmntMthd_RecyclerViewAdapter adapter = new PmntMthd_RecyclerViewAdapter(requireContext(), mockMethodList);
         recyclerView.setAdapter(adapter);

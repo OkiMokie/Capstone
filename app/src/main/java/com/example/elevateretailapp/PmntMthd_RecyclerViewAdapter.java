@@ -11,6 +11,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 
 //The adapter that is used for the array in payment methods fragment and the recyclerview on that layout
@@ -34,8 +36,14 @@ public class PmntMthd_RecyclerViewAdapter extends RecyclerView.Adapter<PmntMthd_
 
     @Override
     public void onBindViewHolder(@NonNull PmntMthd_RecyclerViewAdapter.MyViewHolder holder, int position) {
-        holder.cardNum.setText(paymentMethodList.get(position).getCardNum());
-        holder.cardLogo.setImageResource(paymentMethodList.get(position).getCardTypeImage());
+        PaymentMethodItem item = paymentMethodList.get(position);
+
+        holder.cardNum.setText(item.getCardNum());
+        Glide.with(context)
+                .load(item.getCardTypeImage())
+                .override(200, 200) // optional size adjustment
+                .into(holder.cardLogo);
+
     }
 
     @Override

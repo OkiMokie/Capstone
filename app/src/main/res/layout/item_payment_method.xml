@@ -15,7 +15,7 @@
             android:id="@+id/card_logo_image"
             android:layout_width="40dp"
             android:layout_height="35dp"
-            android:background="@drawable/image_view_frame"
+            android:background="@drawable/blank_view_frame"
             android:layout_gravity="center"
             android:gravity="center"
             android:layout_weight=".02"/>

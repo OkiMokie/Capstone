@@ -35,17 +35,17 @@ public class TransactionHistoryFragment extends Fragment {
 
         //Mock data to show transaction history in fragment
         ArrayList<OrderedTransactionItem> tempList = new ArrayList<>();
-        tempList.add(new OrderedTransactionItem(R.drawable.product_image, "Power Bank", "Jul. 5th, 2025", "Shipped"));
-        tempList.add(new OrderedTransactionItem(R.drawable.product_image, "Bluetooth Speaker", "Jun. 25th, 2025", "Shipped"));
-        tempList.add(new OrderedTransactionItem(R.drawable.product_image, "Beanie Hat", "Jun. 10th, 2025", "Out for Delivery"));
-        tempList.add(new OrderedTransactionItem(R.drawable.product_image, "Sunglasses", "May 20th, 2025", "Out for Delivery"));
-        tempList.add(new OrderedTransactionItem(R.drawable.product_image, "Water Bottle", "May 4th, 2025", "Delivered"));
-        tempList.add(new OrderedTransactionItem(R.drawable.product_image, "Wireless Mouse", "Apr. 18th, 2025", "Delivered"));
-        tempList.add(new OrderedTransactionItem(R.drawable.product_image, "Notebook", "Apr. 2nd, 2025", "Delivered"));
-        tempList.add(new OrderedTransactionItem(R.drawable.product_image, "Backpack", "Mar. 15th, 2025", "Cancelled"));
-        tempList.add(new OrderedTransactionItem(R.drawable.product_image, "Key Chain", "Mar. 1st, 2025", "Delivered"));
-        tempList.add(new OrderedTransactionItem(R.drawable.product_image, "Phone Case", "Feb. 8th, 2025", "Delivered"));
-        tempList.add(new OrderedTransactionItem(R.drawable.product_image, "Socks", "Jan 26th, 2025", "Delivered"));
+        tempList.add(new OrderedTransactionItem(R.drawable.powerbank, "Power Bank", "Jul. 5th, 2025", "Shipped"));
+        tempList.add(new OrderedTransactionItem(R.drawable.bluetoothspeaker, "Bluetooth Speaker", "Jun. 25th, 2025", "Shipped"));
+        tempList.add(new OrderedTransactionItem(R.drawable.beanie, "Beanie Hat", "Jun. 10th, 2025", "Out for Delivery"));
+        tempList.add(new OrderedTransactionItem(R.drawable.sunglasses, "Sunglasses", "May 20th, 2025", "Out for Delivery"));
+        tempList.add(new OrderedTransactionItem(R.drawable.waterbottle, "Water Bottle", "May 4th, 2025", "Delivered"));
+        tempList.add(new OrderedTransactionItem(R.drawable.wirelessmouse, "Wireless Mouse", "Apr. 18th, 2025", "Delivered"));
+        tempList.add(new OrderedTransactionItem(R.drawable.notebook, "Notebook", "Apr. 2nd, 2025", "Delivered"));
+        tempList.add(new OrderedTransactionItem(R.drawable.backpack, "Backpack", "Mar. 15th, 2025", "Cancelled"));
+        tempList.add(new OrderedTransactionItem(R.drawable.keychain, "Key Chain", "Mar. 1st, 2025", "Delivered"));
+        tempList.add(new OrderedTransactionItem(R.drawable.phonecase, "Phone Case", "Feb. 8th, 2025", "Delivered"));
+        tempList.add(new OrderedTransactionItem(R.drawable.socks, "Socks", "Jan 26th, 2025", "Delivered"));
 
         //Adapter code
         OT_RecyclerViewAdapter adapter = new OT_RecyclerViewAdapter(requireContext(), tempList);

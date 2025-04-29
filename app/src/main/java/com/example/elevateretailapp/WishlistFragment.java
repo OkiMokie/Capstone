@@ -34,7 +34,7 @@ public class WishlistFragment extends Fragment {
         });
 
         ArrayList<WishlistItem> mockWishList = new ArrayList<>();
-        mockWishList.add(new WishlistItem("Coke Machine", "Jan. 1, 2025", R.drawable.product_image));
+        mockWishList.add(new WishlistItem("Coke Machine", "Jan. 1, 2025", R.drawable.cokemachine));
 
         WishList_RecycleViewAdapter adapter = new WishList_RecycleViewAdapter(requireContext(), mockWishList);
         recyclerView.setAdapter(adapter);
