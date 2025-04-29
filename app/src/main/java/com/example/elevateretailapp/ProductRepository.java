@@ -18,7 +18,7 @@ public class ProductRepository {
         void onError(String errorMessage);
     }
 
-    public void getProducts(Context context, ProductCallback callback) {
+    public static void getProducts(Context context, ProductCallback callback) {
         String url = APICon.Product_URL;
 
         JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null,
