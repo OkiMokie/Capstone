@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+//Adapter used for featured items recyclerview in home fragment
 public class HomeFeatured_RecyclerViewAdapter extends RecyclerView.Adapter<HomeFeatured_RecyclerViewAdapter.MyViewHolder> {
 
     private Context context;

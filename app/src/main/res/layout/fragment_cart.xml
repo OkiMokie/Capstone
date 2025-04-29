@@ -7,6 +7,7 @@
     android:background="#dadada"
     tools:context=".CartFragment">
 
+    <!--Cart fragment-->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -16,6 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <!--Total text-->
             <TextView
                 android:id="@+id/totalTextBox"
                 android:layout_width="match_parent"
@@ -31,6 +33,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <!--Button-->
             <androidx.cardview.widget.CardView
                 android:id="@+id/btnBackgroundCard"
                 android:layout_width="match_parent"
@@ -52,6 +55,7 @@
                     android:textColor="#fffca3" />
             </androidx.cardview.widget.CardView>
 
+            <!--Text for items and recyclerview that holds them-->
             <TextView
                 android:id="@+id/itemTextBox"
                 android:layout_width="match_parent"
@@ -97,6 +101,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/cartRecyclerView"
                 app:layout_constraintVertical_bias="0" />
 
+            <!--Other info-->
             <TextView
                 android:id="@+id/informationOnReturnsTextBox"
                 android:layout_width="match_parent"
@@ -125,6 +130,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/informationOnReturnsTextBox"
                 app:layout_constraintVertical_bias="0"/>
 
+            <!--Reyclerview that would have held suggested items-->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/customersAlsoBoughtRecyclerView"
                 android:layout_width="match_parent"

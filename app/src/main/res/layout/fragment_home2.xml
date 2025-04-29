@@ -7,11 +7,13 @@
     android:background="#ffffff"
     tools:context=".HomeFragment">
 
+    <!--Home fragment-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <!--Holds Imageview for user and greets-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -45,6 +47,7 @@
 
         </LinearLayout>
 
+        <!--Presents each Recyclerview with a text-->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

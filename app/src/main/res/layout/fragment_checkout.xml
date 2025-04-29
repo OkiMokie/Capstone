@@ -7,6 +7,7 @@
     android:background="#dadada"
     tools:context=".CheckoutFragment">
 
+    <!--Checkout Screen with Scrollview-->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -20,10 +21,10 @@
                 android:id="@+id/HeaderTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="By placing your order, you agree to ElevateRetail's Privacy Notice and conditions of use"
-                android:padding="10dp"
-                android:textAlignment="center"
                 android:background="#ffff"
+                android:padding="10dp"
+                android:text="By placing your order, you agree to ElevateRetail's Privacy Notice and conditions of use"
+                android:textAlignment="center"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -34,29 +35,30 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:backgroundTint="#FFFFFF"
-                app:layout_constraintTop_toBottomOf="@+id/HeaderTextView"
+                app:layout_constraintEnd_toEndOf="@+id/totalCheckoutTextBox"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/totalCheckoutTextBox">
+                app:layout_constraintTop_toBottomOf="@+id/HeaderTextView">
 
+                <!--Button confirms purchase and brings user to receipt screen-->
                 <Button
                     android:id="@+id/placeYourOrderBtn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Place your order"
                     android:backgroundTint="#6A42F4"
-                    android:textColor="#fffca3"
-                    android:padding="12dp" />
+                    android:padding="12dp"
+                    android:text="Place your order"
+                    android:textColor="#fffca3" />
             </androidx.cardview.widget.CardView>
 
-
+            <!--Recyclerview that presents the chosen items-->
             <TextView
                 android:id="@+id/totalCheckoutTextBox"
-                android:text="Items:"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
                 android:background="#ffffff"
                 android:padding="8dp"
-                android:layout_marginTop="5dp"
+                android:text="Items:"
                 android:textColor="@android:color/black"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -67,74 +69,86 @@
                 android:id="@+id/itemsRecyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:background="#ffffff"
-                android:padding="8dp"
                 android:layout_marginBottom="5dp"
+                android:background="#ffffff"
                 android:hint="Enter items"
-                app:layout_constraintTop_toBottomOf="@id/totalCheckoutTextBox"
+                android:padding="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintTop_toBottomOf="@id/totalCheckoutTextBox" />
 
             <TextView
                 android:id="@+id/voucher_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#FFFFFF"
-                android:padding="8dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
+                android:background="#FFFFFF"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="Have a discount? Enter a voucher below!"
                 android:textColor="@android:color/black"
                 android:textStyle="bold"
-                android:gravity="center"
-                android:text="Have a discount? Enter a voucher below!"
                 app:drawableEndCompat="@drawable/baseline_arrow_downward_24"
                 app:drawableStartCompat="@drawable/baseline_arrow_downward_24"
-                app:layout_constraintTop_toBottomOf="@+id/itemsRecyclerView"/>
+                app:layout_constraintTop_toBottomOf="@+id/itemsRecyclerView" />
 
+            <!--A place to enter the voucher code-->
             <EditText
                 android:id="@+id/voucher_edit_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#FFFFFF"
-                android:padding="8dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
+                android:background="#FFFFFF"
                 android:hint="Enter your voucher here..."
-                app:layout_constraintTop_toBottomOf="@+id/voucher_label"/>
+                android:padding="8dp"
+                app:layout_constraintTop_toBottomOf="@+id/voucher_label" />
 
+            <Button
+                android:id="@+id/redeemBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#C37503"
+                android:text="Redeem"
+                app:layout_constraintBottom_toTopOf="@id/totals_cardview"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/voucher_edit_text" />
 
-            
+            <!--Presents total-->
             <androidx.cardview.widget.CardView
                 android:id="@+id/totals_cardview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:backgroundTint="#FFFFFF"
-                app:layout_constraintTop_toBottomOf="@+id/voucher_edit_text"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/deliveringToText"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toTopOf="@+id/deliveringToText">
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/voucher_edit_text">
 
                 <TextView
                     android:id="@+id/checkout_total_amount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
-                    android:textColor="@color/black"
                     android:text="Total w/ Tax: "
-                    android:textStyle="bold"/>
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
 
 
             </androidx.cardview.widget.CardView>
 
+            <!--Text boxes for rest of fragment-->
             <TextView
                 android:id="@+id/deliveringToText"
-                android:text="Delivering to:"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
                 android:background="#ffff"
                 android:padding="8dp"
-                android:layout_marginTop="5dp"
+                android:text="Delivering to:"
                 android:textColor="@android:color/black"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -155,12 +169,12 @@
 
             <TextView
                 android:id="@+id/arrivingTextBox"
-                android:text="Arriving:"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
                 android:background="#ffff"
                 android:padding="8dp"
-                android:layout_marginTop="5dp"
+                android:text="Arriving:"
                 android:textColor="@android:color/black"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -170,22 +184,22 @@
                 android:id="@+id/arrivingText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#ffffff"
-                android:padding="8dp"
                 android:layout_marginBottom="5dp"
+                android:background="#ffffff"
                 android:hint="Tomorrow"
-                app:layout_constraintTop_toBottomOf="@id/arrivingTextBox"
+                android:padding="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintTop_toBottomOf="@id/arrivingTextBox" />
 
             <TextView
                 android:id="@+id/deliveryOptionsTextBox"
-                android:text="Delivery Options:"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
                 android:background="#ffff"
                 android:padding="8dp"
-                android:layout_marginTop="4dp"
+                android:text="Delivery Options:"
                 android:textColor="@android:color/black"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -195,13 +209,13 @@
                 android:id="@+id/deliveryOptionsText"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
-                android:background="#ffffff"
-                android:padding="8dp"
                 android:layout_marginBottom="5dp"
+                android:background="#ffffff"
                 android:hint="options"
-                app:layout_constraintTop_toBottomOf="@id/deliveryOptionsTextBox"
+                android:padding="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintTop_toBottomOf="@id/deliveryOptionsTextBox" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

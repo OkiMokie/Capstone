@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+//Adapter used for new arrivals recycler view in home fragment
 public class HomeArrivals_RecyclerViewAdapter extends RecyclerView.Adapter<HomeArrivals_RecyclerViewAdapter.MyViewHolder> {
 
     private Context context;

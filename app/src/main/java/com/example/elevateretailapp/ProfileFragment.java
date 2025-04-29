@@ -66,6 +66,7 @@ public class ProfileFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
+        // Widgets
         Button historyBtn = view.findViewById(R.id.btn_transaction_history);
         Button shippingAddressesBtn = view.findViewById(R.id.btn_shipping);
         Button wishlistBtn = view.findViewById(R.id.btn_wishlist);
@@ -74,6 +75,7 @@ public class ProfileFragment extends Fragment {
         RecyclerView RW_recyclerview = view.findViewById(R.id.recent_wishlist_recycler);
         RecyclerView SI_recyclerview = view.findViewById(R.id.suggested_item_recycler);
 
+        //Leads to other fragments through the buttons on this fragment
         historyBtn.setOnClickListener(v ->
                 requireActivity()
                         .getSupportFragmentManager()
@@ -122,8 +124,7 @@ public class ProfileFragment extends Fragment {
         mockProfileItems2.add(new Product(10, "Pens", "Pack of 5 gel pens", 110, 210, R.drawable.product_image, "$7.99"));
 
 
-
-
+        //Recyclerview that populates recently wishlisted product items
         RW_RecyclerViewAdapter adapter1 = new RW_RecyclerViewAdapter(
                 requireContext(),
                 mockProfileItems1,
@@ -147,6 +148,8 @@ public class ProfileFragment extends Fragment {
                     }
                 }
         );
+
+        //Connecting adapters to Recyclerviews
         RW_recyclerview.setAdapter(adapter1);
         RW_recyclerview.setLayoutManager(new LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL, false));
 

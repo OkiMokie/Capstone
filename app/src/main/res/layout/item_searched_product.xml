@@ -7,6 +7,7 @@
     android:layout_margin="6dp"
     app:cardCornerRadius="10dp">
 
+    <!--Item used for search fragment to represent products-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

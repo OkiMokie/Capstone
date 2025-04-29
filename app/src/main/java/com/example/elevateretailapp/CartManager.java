@@ -1,8 +1,8 @@
 package com.example.elevateretailapp;
 
-import java.util.ArrayList;
 import java.util.List;
 
+//Manager that controls access to the cart/makes sure there is access to one cart in app at all times
 public class CartManager {
     private static final Cart cart = new Cart();
 

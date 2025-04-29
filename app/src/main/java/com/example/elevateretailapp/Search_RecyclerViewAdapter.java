@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+//Adapter used for the recycler view in search fragment
 public class Search_RecyclerViewAdapter extends RecyclerView.Adapter<Search_RecyclerViewAdapter.MyViewHolder> {
 
     List<Product> searchList;
