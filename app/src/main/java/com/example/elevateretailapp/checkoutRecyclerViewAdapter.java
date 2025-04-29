@@ -17,6 +17,7 @@ public class checkoutRecyclerViewAdapter extends RecyclerView.Adapter<checkoutRe
     private List<Product> productList;
     private Context context;
 
+    //Adapter used for recyclerview in checkout fragment
     public checkoutRecyclerViewAdapter(List<Product> productList, Context context) {
         this.productList = productList;
         this.context = context;

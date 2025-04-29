@@ -42,6 +42,7 @@ public class HomeFragment extends Fragment {
         return fragment;
     }
 
+    //Inflates the home fragment
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -56,6 +57,7 @@ public class HomeFragment extends Fragment {
         return rootView;
     }
 
+    // Fetches the first 6 products from the API to display as new arrivals
     private void fetchNewArrivals() {
         APIHelper.fetchAllProducts(getContext(), new Response.Listener<JSONArray>() {
             @Override
@@ -113,6 +115,7 @@ public class HomeFragment extends Fragment {
         });
     }
 
+    // Fetches products 7–18 from the API to display as featured items in a grid
     private void fetchFeaturedItems() {
         APIHelper.fetchAllProducts(getContext(), new Response.Listener<JSONArray>() {
             @Override

@@ -7,12 +7,13 @@
     android:background="#ffffff"
     tools:context=".SettingsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-
+    <!--Settings fragment with buttons-->
+    <!--Would lead to other fragments-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
 
         <LinearLayout
             android:id="@+id/settingsTitleBar"

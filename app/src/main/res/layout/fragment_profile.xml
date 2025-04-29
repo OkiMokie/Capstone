@@ -16,6 +16,7 @@
             android:background="#ffffff"
             android:orientation="vertical">
 
+        <!--Greets user and buttons that lead to other fragments-->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -78,7 +79,7 @@
 
             </LinearLayout>
 
-
+        <!--Recycler views-->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -117,6 +118,7 @@
 
             </androidx.recyclerview.widget.RecyclerView>
 
+        <!--Discounts presented and buttons for a review and contact page-->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
