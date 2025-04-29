@@ -18,8 +18,7 @@ public class ProductRepository {
         void onError(String errorMessage);
     }
 
-
-    public static void getProducts(Context context, ProductCallback callback) {
+    public void getProducts(Context context, ProductCallback callback) {
         String url = APICon.Product_URL;
 
         JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null,
@@ -29,14 +28,20 @@ public class ProductRepository {
                         for (int i = 0; i < response.length(); i++) {
                             JSONObject obj = response.getJSONObject(i);
 
+                            String imageUrl = obj.optString("image_url", null);
+                            if (imageUrl == null || imageUrl.isEmpty() || imageUrl.equals("null")) {
+                                imageUrl = null;
+                            }
+
                             Product product = new Product(
                                     obj.getInt("product_id"),
                                     obj.getString("product_name"),
                                     obj.getString("product_description"),
                                     obj.getInt("category_id"),
                                     obj.getInt("supplier_id"),
-                                    R.drawable.product_image, // Placeholder image; replace with real logic later
-                                    obj.getString("price")
+                                    R.drawable.product_image, // fallback drawable
+                                    obj.getString("price"),
+                                    imageUrl // remote image URL
                             );
 
                             productList.add(product);
@@ -51,6 +56,4 @@ public class ProductRepository {
 
         VolleySingleton.getInstance(context).addToRequestQueue(request);
     }
-
-
 }

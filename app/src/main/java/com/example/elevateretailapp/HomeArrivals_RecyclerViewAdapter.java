@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 
 //Adapter used for new arrivals recycler view in home fragment
@@ -28,9 +30,8 @@ public class HomeArrivals_RecyclerViewAdapter extends RecyclerView.Adapter<HomeA
     @NonNull
     @Override
     public HomeArrivals_RecyclerViewAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.item_profile_product, parent, false);
-        return new HomeArrivals_RecyclerViewAdapter.MyViewHolder(view);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_profile_product, parent, false);
+        return new MyViewHolder(view);
     }
 
     @Override
@@ -39,7 +40,15 @@ public class HomeArrivals_RecyclerViewAdapter extends RecyclerView.Adapter<HomeA
 
         holder.productName.setText(item.getProduct_name());
         holder.productPrice.setText(item.getPrice());
-        holder.productImage.setImageResource(item.getImageResId());
+
+        if (item.getImageUrl() != null && !item.getImageUrl().isEmpty() && !item.getImageUrl().equalsIgnoreCase("null")) {
+            Glide.with(context)
+                    .load(item.getImageUrl())
+                    .placeholder(item.getImageResId())
+                    .into(holder.productImage);
+        } else {
+            holder.productImage.setImageResource(item.getImageResId());
+        }
 
         holder.itemView.setOnClickListener(v -> {
             if (listener != null) {

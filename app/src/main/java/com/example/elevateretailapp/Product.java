@@ -6,13 +6,15 @@ public class Product {
     private String product_description;
     private int category_id;
     private int supplier_id;
-    private int imageResId; // drawable resource ID
-    private String price; // price as a String like "$9.99"
-    private int quantity = 1; // default to 1
+    private int imageResId; // fallback drawable
+    private String imageUrl; // remote image
+    private String price;
+    private int quantity = 1;
 
     public Product() {}
 
-    public Product(int product_id, String product_name, String product_description, int category_id, int supplier_id, int imageResId, String price) {
+    public Product(int product_id, String product_name, String product_description,
+                   int category_id, int supplier_id, int imageResId, String price, String imageUrl) {
         this.product_id = product_id;
         this.product_name = product_name;
         this.product_description = product_description;
@@ -20,9 +22,10 @@ public class Product {
         this.supplier_id = supplier_id;
         this.imageResId = imageResId;
         this.price = price;
+        this.imageUrl = imageUrl;
     }
 
-    // Getters and Setters
+    // Getters and setters
     public int getProduct_id() {
         return product_id;
     }
@@ -71,6 +74,14 @@ public class Product {
         this.imageResId = imageResId;
     }
 
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
     public String getPrice() {
         return price;
     }
@@ -96,7 +107,9 @@ public class Product {
                 ", category_id=" + category_id +
                 ", supplier_id=" + supplier_id +
                 ", imageResId=" + imageResId +
+                ", imageUrl='" + imageUrl + '\'' +
                 ", price='" + price + '\'' +
+                ", quantity=" + quantity +
                 '}';
     }
 }

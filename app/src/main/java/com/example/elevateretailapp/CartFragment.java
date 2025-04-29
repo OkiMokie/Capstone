@@ -1,8 +1,6 @@
 package com.example.elevateretailapp;
 
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,13 +24,7 @@ public class CartFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private Handler cartHandler = new Handler(Looper.getMainLooper());
-    private Runnable cartCheckRunnable;
-    private boolean cartWasEmpty = false;
-
-    public CartFragment() {
-        // Required empty public constructor
-    }
+    public CartFragment() {}
 
     public static CartFragment newInstance(String param1, String param2) {
         CartFragment fragment = new CartFragment();
@@ -68,12 +60,9 @@ public class CartFragment extends Fragment {
             scheduleCartReminder();
         }
 
-        checkoutButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (getActivity() instanceof MainActivity) {
-                    ((MainActivity) getActivity()).setCurrentFragment(new CheckoutFragment());
-                }
+        checkoutButton.setOnClickListener(v -> {
+            if (getActivity() instanceof MainActivity) {
+                ((MainActivity) getActivity()).setCurrentFragment(new CheckoutFragment());
             }
         });
 
@@ -98,6 +87,7 @@ public class CartFragment extends Fragment {
     private void scheduleCartReminder() {
         OneTimeWorkRequest reminderRequest = new OneTimeWorkRequest.Builder(CartNotificationWorker.class)
                 .setInitialDelay(5, TimeUnit.SECONDS)
+                .addTag("cartReminder")
                 .build();
 
         WorkManager.getInstance(requireContext()).enqueue(reminderRequest);

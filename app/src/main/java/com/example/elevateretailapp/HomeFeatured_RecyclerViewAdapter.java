@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 
 //Adapter used for featured items recyclerview in home fragment
@@ -19,8 +21,8 @@ public class HomeFeatured_RecyclerViewAdapter extends RecyclerView.Adapter<HomeF
     private ArrayList<Product> homeFeaturedItemList;
     private OnProductClickListener listener;
 
-    public HomeFeatured_RecyclerViewAdapter(ArrayList<Product> homeProductItemList, Context context, OnProductClickListener listener) {
-        this.homeFeaturedItemList = homeProductItemList;
+    public HomeFeatured_RecyclerViewAdapter(ArrayList<Product> homeFeaturedItemList, Context context, OnProductClickListener listener) {
+        this.homeFeaturedItemList = homeFeaturedItemList;
         this.context = context;
         this.listener = listener;
     }
@@ -28,17 +30,25 @@ public class HomeFeatured_RecyclerViewAdapter extends RecyclerView.Adapter<HomeF
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.item_profile_product, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_profile_product, parent, false);
         return new MyViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Product item = homeFeaturedItemList.get(position);
+
         holder.productName.setText(item.getProduct_name());
         holder.productPrice.setText(item.getPrice());
-        holder.productImage.setImageResource(item.getImageResId());
+
+        if (item.getImageUrl() != null && !item.getImageUrl().isEmpty() && !item.getImageUrl().equalsIgnoreCase("null")) {
+            Glide.with(context)
+                    .load(item.getImageUrl())
+                    .placeholder(item.getImageResId())
+                    .into(holder.productImage);
+        } else {
+            holder.productImage.setImageResource(item.getImageResId());
+        }
 
         holder.itemView.setOnClickListener(v -> {
             if (listener != null) {
