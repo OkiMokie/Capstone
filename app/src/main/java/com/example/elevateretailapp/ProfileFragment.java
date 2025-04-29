@@ -1,7 +1,6 @@
 package com.example.elevateretailapp;
 
 import android.os.Bundle;
-
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,35 +12,16 @@ import android.widget.Button;
 
 import java.util.ArrayList;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ProfileFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class ProfileFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
-    public ProfileFragment() {
-        // Required empty public constructor
-    }
+    public ProfileFragment() {}
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ProfileFragment.
-     */
-    // TODO: Rename and change types and number of parameters
     public static ProfileFragment newInstance(String param1, String param2) {
         ProfileFragment fragment = new ProfileFragment();
         Bundle args = new Bundle();
@@ -63,7 +43,6 @@ public class ProfileFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
         Button historyBtn = view.findViewById(R.id.btn_transaction_history);
@@ -75,84 +54,56 @@ public class ProfileFragment extends Fragment {
         RecyclerView SI_recyclerview = view.findViewById(R.id.suggested_item_recycler);
 
         historyBtn.setOnClickListener(v ->
-                requireActivity()
-                        .getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.FragmentContainer, new TransactionHistoryFragment())
-                        .commit()
-        );
+                requireActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.FragmentContainer, new TransactionHistoryFragment()).commit());
 
         shippingAddressesBtn.setOnClickListener(v ->
-                requireActivity()
-                        .getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.FragmentContainer, new ShippingAddressesFragment())
-                        .commit()
-        );
+                requireActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.FragmentContainer, new ShippingAddressesFragment()).commit());
 
         wishlistBtn.setOnClickListener(v ->
-                requireActivity()
-                        .getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.FragmentContainer, new WishlistFragment())
-                        .commit()
-        );
+                requireActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.FragmentContainer, new WishlistFragment()).commit());
 
         paymentMethodsBtn.setOnClickListener(v ->
-                requireActivity()
-                        .getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.FragmentContainer, new PaymentMethodsFragment())
-                        .commit()
-        );
+                requireActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.FragmentContainer, new PaymentMethodsFragment()).commit());
 
-        //Mock data for recyclerviews in profile page
         ArrayList<Product> mockProfileItems1 = new ArrayList<>();
-        mockProfileItems1.add(new Product(1, "Pencils", "Box of 12 graphite pencils", 101, 201, R.drawable.product_image, "$12.99"));
-        mockProfileItems1.add(new Product(2, "One Piece Statue", "Detailed anime figure", 102, 202, R.drawable.product_image, "$59.99"));
-        mockProfileItems1.add(new Product(3, "Notebook", "100 pages spiral notebook", 103, 203, R.drawable.product_image, "$5.99"));
-        mockProfileItems1.add(new Product(4, "Lamp", "Desk lamp with LED bulb", 104, 204, R.drawable.product_image, "$55.99"));
-        mockProfileItems1.add(new Product(5, "The One and Only, Bucky Barnes", "The best marvel character", 105, 205, R.drawable.product_image, "$2999.99"));
+        mockProfileItems1.add(new Product(1, "Pencils", "Box of 12 graphite pencils", 101, 201, R.drawable.product_image, "$12.99", null));
+        mockProfileItems1.add(new Product(2, "One Piece Statue", "Detailed anime figure", 102, 202, R.drawable.product_image, "$59.99", null));
+        mockProfileItems1.add(new Product(3, "Notebook", "100 pages spiral notebook", 103, 203, R.drawable.product_image, "$5.99", null));
+        mockProfileItems1.add(new Product(4, "Lamp", "Desk lamp with LED bulb", 104, 204, R.drawable.product_image, "$55.99", null));
+        mockProfileItems1.add(new Product(5, "The One and Only, Bucky Barnes", "The best marvel character", 105, 205, R.drawable.product_image, "$2999.99", null));
 
         ArrayList<Product> mockProfileItems2 = new ArrayList<>();
-        mockProfileItems2.add(new Product(6, "Headphones", "Wireless over-ear headphones", 106, 206, R.drawable.product_image, "$99.99"));
-        mockProfileItems2.add(new Product(7, "Notepad", "Sticky notepad", 107, 207, R.drawable.product_image, "$3.99"));
-        mockProfileItems2.add(new Product(8, "Xbox Controller", "Wireless gaming controller", 108, 208, R.drawable.product_image, "$109.99"));
-        mockProfileItems2.add(new Product(9, "Drawing Tablet", "Digital drawing tablet with pen", 109, 209, R.drawable.product_image, "$159.99"));
-        mockProfileItems2.add(new Product(10, "Pens", "Pack of 5 gel pens", 110, 210, R.drawable.product_image, "$7.99"));
-
-
-
+        mockProfileItems2.add(new Product(6, "Headphones", "Wireless over-ear headphones", 106, 206, R.drawable.product_image, "$99.99", null));
+        mockProfileItems2.add(new Product(7, "Notepad", "Sticky notepad", 107, 207, R.drawable.product_image, "$3.99", null));
+        mockProfileItems2.add(new Product(8, "Xbox Controller", "Wireless gaming controller", 108, 208, R.drawable.product_image, "$109.99", null));
+        mockProfileItems2.add(new Product(9, "Drawing Tablet", "Digital drawing tablet with pen", 109, 209, R.drawable.product_image, "$159.99", null));
+        mockProfileItems2.add(new Product(10, "Pens", "Pack of 5 gel pens", 110, 210, R.drawable.product_image, "$7.99", null));
 
         RW_RecyclerViewAdapter adapter1 = new RW_RecyclerViewAdapter(
                 requireContext(),
                 mockProfileItems1,
-                new OnProductClickListener() {
-                    @Override
-                    public void onProductClick(Product item) {
-                        if (getActivity() instanceof MainActivity) {
-                            ((MainActivity) getActivity()).setCurrentFragment(
-                                    new itemPage(
-                                            item.getProduct_id(),
-                                            item.getProduct_name(),
-                                            item.getProduct_description(),
-                                            item.getCategory_id(),
-                                            item.getSupplier_id(),
-                                            item.getImageResId(),
-                                            item.getPrice()
-                                    )
-                            );
-
-                        }
+                item -> {
+                    if (getActivity() instanceof MainActivity) {
+                        ((MainActivity) getActivity()).setCurrentFragment(
+                                new itemPage(item.getProduct_id(), item.getProduct_name(),
+                                        item.getProduct_description(), item.getCategory_id(),
+                                        item.getSupplier_id(), item.getImageResId(),
+                                        item.getPrice(), item.getImageUrl())
+                        );
                     }
                 }
         );
+
         RW_recyclerview.setAdapter(adapter1);
-        RW_recyclerview.setLayoutManager(new LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL, false));
+        RW_recyclerview.setLayoutManager(new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));
 
         SI_RecyclerViewAdapter adapter2 = new SI_RecyclerViewAdapter(requireContext(), mockProfileItems2);
         SI_recyclerview.setAdapter(adapter2);
-        SI_recyclerview.setLayoutManager(new LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL, false));
+        SI_recyclerview.setLayoutManager(new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));
 
         return view;
     }

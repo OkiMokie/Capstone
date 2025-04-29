@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.List;
 
 public class CartRecyclerViewAdapter extends RecyclerView.Adapter<CartRecyclerViewAdapter.ViewHolder> {
@@ -38,15 +40,23 @@ public class CartRecyclerViewAdapter extends RecyclerView.Adapter<CartRecyclerVi
         holder.quantityText.setText(String.valueOf(product.getQuantity()));
         holder.productName.setText(product.getProduct_name());
         holder.productPrice.setText(product.getPrice());
-        holder.productImage.setImageResource(product.getImageResId());
+
+        if (product.getImageUrl() != null && !product.getImageUrl().isEmpty() && !product.getImageUrl().equalsIgnoreCase("null")) {
+            Glide.with(context)
+                    .load(product.getImageUrl())
+                    .placeholder(product.getImageResId())
+                    .into(holder.productImage);
+        } else {
+            holder.productImage.setImageResource(product.getImageResId());
+        }
 
         holder.plusButton.setOnClickListener(v -> {
-            product.setQuantity(product.getQuantity());
+            product.setQuantity(product.getQuantity() + 1);
             CartManager.addToCart(product);
             notifyItemChanged(position);
 
             if (cartChangedListener != null) {
-                cartChangedListener.onCartChanged(); // 🧠 update total
+                cartChangedListener.onCartChanged();
             }
         });
 
@@ -56,16 +66,14 @@ public class CartRecyclerViewAdapter extends RecyclerView.Adapter<CartRecyclerVi
                 product.setQuantity(currentQty - 1);
                 notifyItemChanged(position);
             } else {
-                //if quantity = 1, it deletes from view
                 cartItemList.remove(position);
                 CartManager.removeFromCart(product);
                 notifyItemRemoved(position);
             }
 
             if (cartChangedListener != null) {
-                cartChangedListener.onCartChanged(); // 🧠 update total
+                cartChangedListener.onCartChanged();
             }
-
         });
     }
 
@@ -83,7 +91,6 @@ public class CartRecyclerViewAdapter extends RecyclerView.Adapter<CartRecyclerVi
             productName = itemView.findViewById(R.id.cart_product_name);
             productPrice = itemView.findViewById(R.id.cart_product_price);
             productImage = itemView.findViewById(R.id.cart_product_image);
-
             plusButton = itemView.findViewById(R.id.plus_btn);
             minusButton = itemView.findViewById(R.id.minus_btn);
             quantityText = itemView.findViewById(R.id.quantity_txt);

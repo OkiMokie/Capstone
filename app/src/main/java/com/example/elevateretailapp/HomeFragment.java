@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.facebook.shimmer.ShimmerFrameLayout;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -26,12 +25,8 @@ public class HomeFragment extends Fragment {
 
     private RecyclerView arrivalsRecycler;
     private RecyclerView featuredRecycler;
-    private ShimmerFrameLayout shimmerContainer;
 
-
-    public HomeFragment() {
-        // Required empty public constructor
-    }
+    public HomeFragment() {}
 
     public static HomeFragment newInstance(String param1, String param2) {
         HomeFragment fragment = new HomeFragment();
@@ -65,14 +60,18 @@ public class HomeFragment extends Fragment {
                     for (int i = 0; i < Math.min(6, response.length()); i++) {
                         JSONObject obj = response.getJSONObject(i);
 
-                        int product_id = obj.getInt("id");
-                        String name = obj.getString("name");
-                        String description = obj.getString("description");
-                        int category_id = obj.getInt("category_id");
-                        int supplier_id = obj.getInt("supplier_id");
-                        String price = obj.getString("unit_price");
+                        Product product = new Product(
+                                obj.getInt("id"),
+                                obj.getString("name"),
+                                obj.getString("description"),
+                                obj.getInt("category_id"),
+                                obj.getInt("supplier_id"),
+                                R.drawable.product_image,
+                                obj.getString("unit_price"),
+                                obj.optString("image_url", null)
+                        );
 
-                        newArrivalsList.add(new Product(product_id, name, description, category_id, supplier_id, R.drawable.product_image, price));
+                        newArrivalsList.add(product);
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -81,35 +80,29 @@ public class HomeFragment extends Fragment {
                 HomeArrivals_RecyclerViewAdapter adapter = new HomeArrivals_RecyclerViewAdapter(
                         newArrivalsList,
                         getContext(),
-                        new OnProductClickListener() {
-                            @Override
-                            public void onProductClick(Product item) {
-                                if (getActivity() instanceof MainActivity) {
-                                    ((MainActivity) getActivity()).setCurrentFragment(
-                                            new itemPage(
-                                                    item.getProduct_id(),
-                                                    item.getProduct_name(),
-                                                    item.getProduct_description(),
-                                                    item.getCategory_id(),
-                                                    item.getSupplier_id(),
-                                                    item.getImageResId(),
-                                                    item.getPrice()
-                                            )
-                                    );
-
-                                }
+                        item -> {
+                            if (getActivity() instanceof MainActivity) {
+                                ((MainActivity) getActivity()).setCurrentFragment(
+                                        new itemPage(
+                                                item.getProduct_id(),
+                                                item.getProduct_name(),
+                                                item.getProduct_description(),
+                                                item.getCategory_id(),
+                                                item.getSupplier_id(),
+                                                item.getImageResId(),
+                                                item.getPrice(),
+                                                item.getImageUrl()
+                                        )
+                                );
                             }
                         }
                 );
                 arrivalsRecycler.setAdapter(adapter);
                 arrivalsRecycler.setLayoutManager(new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));
             }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getContext(), "Failed to load new arrivals", Toast.LENGTH_SHORT).show();
-                Log.e("VOLLEY_ERR", "onErrorResponse: " + error.toString());
-            }
+        }, error -> {
+            Toast.makeText(getContext(), "Failed to load new arrivals", Toast.LENGTH_SHORT).show();
+            Log.e("VOLLEY_ERR", "onErrorResponse: " + error.toString());
         });
     }
 
@@ -122,14 +115,18 @@ public class HomeFragment extends Fragment {
                     for (int i = 6; i < Math.min(18, response.length()); i++) {
                         JSONObject obj = response.getJSONObject(i);
 
-                        int product_id = obj.getInt("id");
-                        String name = obj.getString("name");
-                        String description = obj.getString("description");
-                        int category_id = obj.getInt("category_id");
-                        int supplier_id = obj.getInt("supplier_id");
-                        String price = obj.getString("unit_price");
+                        Product product = new Product(
+                                obj.getInt("id"),
+                                obj.getString("name"),
+                                obj.getString("description"),
+                                obj.getInt("category_id"),
+                                obj.getInt("supplier_id"),
+                                R.drawable.product_image,
+                                obj.getString("unit_price"),
+                                obj.optString("image_url", null)
+                        );
 
-                        featuredList.add(new Product(product_id, name, description, category_id, supplier_id, R.drawable.product_image, price));
+                        featuredList.add(product);
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -138,34 +135,29 @@ public class HomeFragment extends Fragment {
                 HomeFeatured_RecyclerViewAdapter adapter = new HomeFeatured_RecyclerViewAdapter(
                         featuredList,
                         getContext(),
-                        new OnProductClickListener() {
-                            @Override
-                            public void onProductClick(Product item) {
-                                if (getActivity() instanceof MainActivity) {
-                                    ((MainActivity) getActivity()).setCurrentFragment(
-                                            new itemPage(
-                                                    item.getProduct_id(),
-                                                    item.getProduct_name(),
-                                                    item.getProduct_description(),
-                                                    item.getCategory_id(),
-                                                    item.getSupplier_id(),
-                                                    item.getImageResId(),
-                                                    item.getPrice()
-                                            )
-                                    );
-
-                                }
+                        item -> {
+                            if (getActivity() instanceof MainActivity) {
+                                ((MainActivity) getActivity()).setCurrentFragment(
+                                        new itemPage(
+                                                item.getProduct_id(),
+                                                item.getProduct_name(),
+                                                item.getProduct_description(),
+                                                item.getCategory_id(),
+                                                item.getSupplier_id(),
+                                                item.getImageResId(),
+                                                item.getPrice(),
+                                                item.getImageUrl()
+                                        )
+                                );
                             }
                         }
                 );
                 featuredRecycler.setAdapter(adapter);
                 featuredRecycler.setLayoutManager(new GridLayoutManager(requireContext(), 3));
             }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getContext(), "Failed to load featured items", Toast.LENGTH_SHORT).show();
-            }
+        }, error -> {
+            Toast.makeText(getContext(), "Failed to load featured items", Toast.LENGTH_SHORT).show();
+            Log.e("VOLLEY_ERR", "onErrorResponse: " + error.toString());
         });
     }
 }
