@@ -53,7 +53,6 @@ public class CartRecyclerViewAdapter extends RecyclerView.Adapter<CartRecyclerVi
 
         holder.plusButton.setOnClickListener(v -> {
             product.setQuantity(product.getQuantity() + 1);
-            CartManager.addToCart(product);
             notifyItemChanged(position);
 
             if (cartChangedListener != null) {
