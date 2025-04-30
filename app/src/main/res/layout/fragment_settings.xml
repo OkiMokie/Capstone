@@ -7,18 +7,17 @@
     android:background="#ffffff"
     tools:context=".SettingsFragment">
 
-    <!--Settings fragment with buttons-->
-    <!--Would lead to other fragments-->
+    <!-- Settings fragment with buttons -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-
+        <!-- Title Bar -->
         <LinearLayout
             android:id="@+id/settingsTitleBar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <ImageButton
@@ -35,169 +34,170 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginStart="20dp"
+                android:text="@string/Settings_Fragment"
                 android:textSize="20sp"
-                android:textStyle="bold"
-                android:text="@string/Settings_Fragment" />
-
-
+                android:textStyle="bold" />
         </LinearLayout>
 
+        <!-- User Section -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="15dp"
+            android:text="@string/settings_user"
             android:textSize="20sp"
-            android:textStyle="bold"
-            android:text="@string/settings_user"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingTop="5dp"
-        android:paddingBottom="5dp"
-        android:paddingStart="30dp"
-        android:paddingEnd="5dp"
-        android:background="@drawable/blank_view_frame">
-
-        <Button
-            android:id="@+id/payMethodButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/payMethodBtn_text"
-            android:textAlignment="textStart"
-            android:drawableEnd="@drawable/baseline_keyboard_arrow_right_24"/>
-
-        <Button
-            android:id="@+id/shipAddButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/settingsShipAddressBtn_Text"
-            android:textAlignment="textStart"
-            android:drawableEnd="@drawable/baseline_keyboard_arrow_right_24"/>
-
-        <Button
-            android:id="@+id/chngPWButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/settingsChangePWBtn_Text"
-            android:textAlignment="textStart"
-            android:drawableEnd="@drawable/baseline_keyboard_arrow_right_24"/>
+            android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:paddingStart="30dp"
+            android:paddingEnd="5dp"
+            android:background="@drawable/blank_view_frame">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/settingsDarkMode_Text"
-                android:paddingStart="25dp"
-                android:textStyle="bold"/>
-
-            <Switch
-                android:id="@+id/switch1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"/>
-
-
-
-
-
-        </LinearLayout>
-
-        <Button
-            android:id="@+id/notificationButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/notificationBtn_text"
-            android:textAlignment="textStart"
-            android:drawableEnd="@drawable/baseline_keyboard_arrow_right_24"/>
-
-
-    </LinearLayout>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="15dp"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:text="@string/settingsCustomerServ_Text"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingTop="5dp"
-        android:paddingBottom="5dp"
-        android:paddingStart="30dp"
-        android:paddingEnd="5dp"
-        android:background="@drawable/blank_view_frame">
-
-        <Button
-            android:id="@+id/contactUsButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/settingsContactUs_Btn"
-            android:textAlignment="textStart"
-            android:drawableEnd="@drawable/baseline_keyboard_arrow_right_24"/>
-
-        <Button
-            android:id="@+id/leaveReviewButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/settingsLeaveReview_Btn"
-            android:textAlignment="textStart"
-            android:drawableEnd="@drawable/baseline_keyboard_arrow_right_24"/>
-
-    </LinearLayout>
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="15dp"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:text="@string/settings_other"/>
-
-
-        <LinearLayout
+            <Button
+                android:id="@+id/payMethodButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:paddingStart="30dp"
-                android:paddingEnd="5dp"
-                android:background="@drawable/blank_view_frame">
+                android:text="@string/payMethodBtn_text"
+                android:textAlignment="textStart"
+                android:drawableEnd="@drawable/baseline_keyboard_arrow_right_24" />
 
-                <Button
-                    android:id="@+id/aboutButton"
-                    android:layout_width="match_parent"
+            <Button
+                android:id="@+id/shipAddButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/settingsShipAddressBtn_Text"
+                android:textAlignment="textStart"
+                android:drawableEnd="@drawable/baseline_keyboard_arrow_right_24" />
+
+            <Button
+                android:id="@+id/chngPWButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/settingsChangePWBtn_Text"
+                android:textAlignment="textStart"
+                android:drawableEnd="@drawable/baseline_keyboard_arrow_right_24" />
+
+            <!-- Dark Mode Switch -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/aboutBtn_text"
-                    android:textAlignment="textStart"
-                    android:drawableEnd="@drawable/baseline_keyboard_arrow_right_24"/>
+                    android:layout_weight="1"
+                    android:paddingStart="25dp"
+                    android:text="@string/settingsDarkMode_Text"
+                    android:textStyle="bold" />
 
-                <Button
-                    android:id="@+id/legalButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/legalBtn_text"
-                    android:textAlignment="textStart"
-                    android:drawableEnd="@drawable/baseline_keyboard_arrow_right_24"/>
-
-
-
+                <Switch
+                    android:id="@+id/switch1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
             </LinearLayout>
 
-    </LinearLayout>
+            <!-- Notifications Switch -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
 
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingStart="25dp"
+                    android:text="@string/settingsNotification_Text"
+                    android:textStyle="bold" />
+
+                <Switch
+                    android:id="@+id/notificationSwitch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Customer Service Section -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="15dp"
+            android:text="@string/settingsCustomerServ_Text"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:paddingStart="30dp"
+            android:paddingEnd="5dp"
+            android:background="@drawable/blank_view_frame">
+
+            <Button
+                android:id="@+id/contactUsButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/settingsContactUs_Btn"
+                android:textAlignment="textStart"
+                android:drawableEnd="@drawable/baseline_keyboard_arrow_right_24" />
+
+            <Button
+                android:id="@+id/leaveReviewButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/settingsLeaveReview_Btn"
+                android:textAlignment="textStart"
+                android:drawableEnd="@drawable/baseline_keyboard_arrow_right_24" />
+        </LinearLayout>
+
+        <!-- Other Section -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="15dp"
+            android:text="@string/settings_other"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:paddingStart="30dp"
+            android:paddingEnd="5dp"
+            android:background="@drawable/blank_view_frame">
+
+            <Button
+                android:id="@+id/aboutButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/aboutBtn_text"
+                android:textAlignment="textStart"
+                android:drawableEnd="@drawable/baseline_keyboard_arrow_right_24" />
+
+            <Button
+                android:id="@+id/legalButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/legalBtn_text"
+                android:textAlignment="textStart"
+                android:drawableEnd="@drawable/baseline_keyboard_arrow_right_24" />
+        </LinearLayout>
+    </LinearLayout>
 </ScrollView>

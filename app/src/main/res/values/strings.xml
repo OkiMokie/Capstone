@@ -27,4 +27,7 @@
     <string name="settingsContactUs_Btn">Contact Us</string>
     <string name="settingsLeaveReview_Btn">Leave a Review</string>
     <string name="settings_other">Other Settings</string>
+    <string name="notificationBtn_on_text">Notifications On</string>
+    <string name="notificationBtn_off_text">Notifications Off</string>
+    <string name="settingsNotification_Text">Notifications</string>
 </resources>
