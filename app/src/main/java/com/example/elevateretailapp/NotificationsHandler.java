@@ -3,6 +3,7 @@ package com.example.elevateretailapp;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Build;
 
 import androidx.core.app.ActivityCompat;
@@ -12,6 +13,8 @@ import androidx.core.app.NotificationManagerCompat;
 public class NotificationsHandler {
 
     private static final String CHANNEL_ID = "cartChannel";
+    private static final String PREFS_NAME = "AppSettingsPrefs";
+    private static final String NOTIFICATIONS_ENABLED_KEY = "notifications_enabled";
 
     // Call this once in MainActivity
     public static void createNotificationChannel(Context context) {
@@ -31,6 +34,14 @@ public class NotificationsHandler {
 
     // Call this when you want to send a notification
     public static void sendCartReminderNotification(Context context) {
+        SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        boolean notificationsEnabled = prefs.getBoolean(NOTIFICATIONS_ENABLED_KEY, true);  // Default is true
+
+        // Don't send notification if notifications are disabled
+        if (!notificationsEnabled) {
+            return;
+        }
+
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_ID)
                 .setSmallIcon(R.drawable.cart_icon) // Replace with your actual icon
                 .setContentTitle("Still thinking it over?")
